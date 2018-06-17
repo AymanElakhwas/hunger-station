@@ -1,9 +1,9 @@
 <form #f="ngForm" (ngSubmit)="onLogin(f.value)" *ngIf="!auth.loggedIn()">
   <mat-form-field>
-    <input matInput type="text" placeholder="Username" ngControl="username">
+    <input matInput type="text" placeholder="Username" name="username" ngModel>
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" placeholder="Password" ngControl="password">
+    <input matInput type="text" placeholder="Password" name="password" ngModel>
   </mat-form-field>
 
   <button mat-raised-button type="submit">Login</button>

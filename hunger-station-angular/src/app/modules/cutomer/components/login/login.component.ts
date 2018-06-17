@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CustomerAuthenticationService } from '../../services/customer-authentication';
 
 
@@ -9,11 +9,10 @@ import { CustomerAuthenticationService } from '../../services/customer-authentic
   providers: [CustomerAuthenticationService]
 })
 export class LoginComponent {
-  credentials: Credentials;
   constructor(private auth: CustomerAuthenticationService) { }
 
   onLogin(credentials) {
-    this.auth.login(this.credentials);
+    this.auth.login(credentials);
   }
 
 }

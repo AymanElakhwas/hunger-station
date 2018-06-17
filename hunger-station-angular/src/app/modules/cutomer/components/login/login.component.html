@@ -1,4 +1,4 @@
-<form #f="ngForm" (ngSubmit)="onLogin(f.value)" class="example-form">
+<form #f="ngForm" (ngSubmit)="onLogin(f.value)" *ngIf="!auth.loggedIn()">
   <mat-form-field>
     <input matInput type="text" placeholder="Username" ngControl="username">
   </mat-form-field>

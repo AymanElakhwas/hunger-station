@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    HttpClientModule
   ],
   declarations: [LoginComponent, OrderBasketComponent],
   exports: [LoginComponent, OrderBasketComponent]

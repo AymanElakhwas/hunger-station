@@ -1,12 +1,9 @@
 <form #f="ngForm" (ngSubmit)="onLogin(f.value)" class="example-form">
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="Favorite food" value="Sushi">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Username" ngControl="username">
   </mat-form-field>
   <mat-form-field>
-    <input matInput type="text" ngControl="username">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="text" ngControl="password">
+    <input matInput type="text" placeholder="Password" ngControl="password">
   </mat-form-field>
 
   <button mat-raised-button type="submit">Login</button>

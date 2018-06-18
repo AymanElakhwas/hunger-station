@@ -11,7 +11,7 @@ export class RestaurantService {
         return this.http.get('http://localhost:3000/restaurants');
     }
 
-    findOne(id:Number) {
+    findOne(id:string) {
         return this.http.get('http://localhost:3000/restaurants/' + id)
     }
 }

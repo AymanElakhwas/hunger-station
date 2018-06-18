@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { tokenNotExpired } from 'angular2-jwt';
+import { throwError } from 'rxjs';
 
 @Injectable()
 export class CustomerAuthenticationService {
@@ -10,13 +11,14 @@ export class CustomerAuthenticationService {
     login(credentials: Credentials) {
         return this.http.post<any>('http://localhost:3000/api/customers/auth', credentials)
             .pipe(map((res: any) => {
-                return res.json();
-            })).subscribe(res => {
+                if (!res || !res.token) {
+                    throwError('Username or password is incorrect');
+                }
                 // login successful if there's a jwt token in the response
                 // store jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('id_token', res.token);
-            }
-                , error => console.log(error));
+                return res;
+            }));
     }
 
     logout() {

@@ -1,6 +1,9 @@
 .basket-card {
     max-width: 300px;
     margin-top: 40px;
+    position: fixed;
+    top:204px;
+    right: 10px;
 }
 
 .basket-title {
@@ -55,3 +58,4 @@
     font-weight: bold;
     font-size: 2em;
 }
+

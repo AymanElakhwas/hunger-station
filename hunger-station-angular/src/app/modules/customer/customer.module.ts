@@ -23,6 +23,9 @@ import { store } from './redux/store';
 import { OrderState } from './interfaces/OrderState';
 // import { OrderBasket } from './interfaces/order-basket';
 
+import { CustOrderActionsService } from './redux/actions';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -42,6 +45,7 @@ import { OrderState } from './interfaces/OrderState';
     NgReduxModule
   ],
   declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent],
+  providers:[CustOrderActionsService],
   exports: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent]
 })
 export class CutomerModule {

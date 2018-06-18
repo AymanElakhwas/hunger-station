@@ -4,9 +4,10 @@ import '@angular/platform-browser-dynamic';
 import { OrderState } from '../../interfaces/OrderState';
 import { OrderBasket } from '../../interfaces/order-basket';
 
-import { NgRedux, select } from 'ng2-redux';
+import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 
+import { CustOrderActionsService } from '../../redux/actions';
 
 @Component({
   selector: 'app-resturant-menu',
@@ -15,8 +16,10 @@ import { Observable } from 'rxjs';
 })
 export class ResturantMenuComponent implements OnInit {
 
+  resturantId:string = '123456789';
+
   @select('data') orderItemsObservable: Observable<OrderState>;
-  constructor(private ngRedux: NgRedux<OrderState>) {}
+  constructor(private custOrdServ: CustOrderActionsService) {}
 
   ngOnInit() {
     this.orderItemsObservable.subscribe((data)=>
@@ -61,18 +64,13 @@ export class ResturantMenuComponent implements OnInit {
 
   handleBtnAdd(value){
 
-    let actionData = 
-      {
-        type: 'ADD_ORDER_ITEM', 
-        restaurantId: '11223344',
-        item: 
-            {   name: this.menuItems[value].name, 
-                qty: 1, 
-                price: this.menuItems[value].price
-            }
-      };
+    this.custOrdServ.addOrderItemAction(
+        this.resturantId, 
+        {   name: this.menuItems[value].name, 
+            qty: 1, 
+            price: this.menuItems[value].price
+        });
 
-    this.ngRedux.dispatch(actionData);
   }
 
 }

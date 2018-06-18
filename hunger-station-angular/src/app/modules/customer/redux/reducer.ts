@@ -29,18 +29,25 @@ function addOrderItem(state, action): OrderState {
                 items: [...state.data.items, action.item]            
             }
         }
-    // if(!state.data.items['length']){
+    let newItems = state.data.items.slice();
+    let itemFound = false;
+    for(let itm of newItems){
+        if(itm.name == action.item.name){
+            itm.qty = itm.qty + action.item.qty; 
+            itm.price = itm.price + action.item.price;
+            itemFound = true;
+            break;
+        }
+    }
+
+    if(!itemFound){
+        newItems.push(action.item);
+    }
+
+    obj.data.items = newItems;
+
     //     obj.data.items = [...state.data.items, action.item];
-    // }else{
-    //     obj.data.items.push(action.item);
-    // }
-    // Object.assign({}, state, {});
-        // {
-        //     data:{
-        //         restaurantId: action.restaurantId,
-        //         items: [...state.items, action.item] 
-        //     } 
-        // })
+
     return obj;
 }
 

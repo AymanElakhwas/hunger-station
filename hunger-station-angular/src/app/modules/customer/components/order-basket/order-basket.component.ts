@@ -12,6 +12,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class OrderBasketComponent {
   nextPageUrl: string = "/orderconfirmation";
   private orderBasket: OrderBasket = {
+    customerName: 'Fred',
+    customerAddress: {
+      street: '2000 court st',
+      city: 'Fairfield',
+      state: 'IA',
+      zip: '52556',
+      country: 'US'
+    },
+    customerTel: '5106404588',
+    restaurantId: 'restaurant_id0',
     subtotal: 143,
     delivery: 10,
     total: 153,

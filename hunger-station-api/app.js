@@ -9,12 +9,12 @@ const mongoose = require('mongoose');
 const restaurantRoutes = require('./routes/restaurant')
 const customerRoutes = require('./routes/customer')
 
-app.listen(3000, () => { console.log('listening on port 3000') });
-
 //Mongoos connection
-mongoose.connect(
-    'mongodb://localhost:27017/hunger-station-db'
-);
+mongoose.connect('mongodb://admin:admin1@ds263670.mlab.com:63670/hunger-station-db');
+mongoose.Promise = global.Promise;
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 
 //Logging http operations
 app.use(morgan("dev"));

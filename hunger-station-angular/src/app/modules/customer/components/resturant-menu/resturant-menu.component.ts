@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import '@angular/platform-browser-dynamic';
 
 import { OrderState } from '../../interfaces/OrderState';
+import { OrderBasket } from '../../interfaces/order-basket';
 
 import { NgRedux, select } from 'ng2-redux';
 import { Observable } from 'rxjs';
@@ -21,11 +22,13 @@ export class ResturantMenuComponent implements OnInit {
     this.orderItemsObservable.subscribe((data)=>
       {
         console.log('Subscriper Received the new Ordered item list !!');
-        // console.log(data);
+        console.log(data);
+
         // this.orderItems = store.getState().data;
-        for(let i=0; i<data['length']; i++){
-          console.log(data[i]);
-        }  
+        // for(let i=0; i<data['length']; i++){
+        //   console.log(data[i]);
+        // }  
+
       });
   }
 
@@ -59,8 +62,10 @@ export class ResturantMenuComponent implements OnInit {
   handleBtnAdd(value){
 
     let actionData = 
-      {type: 'ADD_ORDER_ITEM', 
-       data: 
+      {
+        type: 'ADD_ORDER_ITEM', 
+        restaurantId: '11223344',
+        item: 
             {   name: this.menuItems[value].name, 
                 qty: 1, 
                 price: this.menuItems[value].price

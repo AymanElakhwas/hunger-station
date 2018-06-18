@@ -19,8 +19,9 @@ import { ResturantMenuComponent } from './components/resturant-menu/resturant-me
 
 import { NgReduxModule, NgRedux } from 'ng2-redux';
 import { store } from './redux/store';
-import { OrderState } from './interfaces/OrderState';
 
+import { OrderState } from './interfaces/OrderState';
+// import { OrderBasket } from './interfaces/order-basket';
 
 @NgModule({
   imports: [

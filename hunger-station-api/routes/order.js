@@ -16,4 +16,17 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.put('/:id', (req, res, next) => {
+    Order.updateOne(req.params.id, req.body, function (err, cus) {
+        if (err) {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        } else {
+            res.json({ 'message': 'success' });
+        }
+    });
+});
+
 module.exports = router;

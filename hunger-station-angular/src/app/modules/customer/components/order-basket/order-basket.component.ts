@@ -43,6 +43,23 @@ export class OrderBasketComponent {
     });
   }
 
+  calculateSummaryPrices(orderBasket: OrderBasket) {
+    let subtotal = 0;
+    for (let item of orderBasket.items) {
+      subtotal += item.price;
+    }
+    orderBasket.subtotal = subtotal;
+    orderBasket.delivery = 10;
+    orderBasket.total = orderBasket.subtotal + orderBasket.delivery;
+  }
+
+  addCustomerDataToOrderBasket(orderBasket: OrderBasket) {
+    const customerStr = localStorage.getItem('currentCustomer');
+    const customer = JSON.parse(customerStr);
+    orderBasket.customerAddress = customer.address;
+    orderBasket.customerName = customer.name;
+    orderBasket.customerTel = customer.tel;
+  }
   // private orderBasket: OrderBasket = {
   //   subtotal: 143,
   //   delivery: 10,

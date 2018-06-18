@@ -35,11 +35,10 @@
       <div class="summary">Total</div>
       <span class="total-price">{{orderBasket.total}}.00</span>
     </mat-list-item>
-
   </mat-list>
 
   <mat-card-actions>
-    <button mat-raised-button color="primary" class="place-order-btn">Place Order</button>
+    <button mat-raised-button color="primary" class="place-order-btn" (click)="onPlaceOrderClick()">Place Order</button>
   </mat-card-actions>
 
 </mat-card>

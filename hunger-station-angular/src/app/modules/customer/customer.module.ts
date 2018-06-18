@@ -16,6 +16,7 @@ import { MatListModule, MatIconModule, MatCardModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { ResturantMenuComponent } from './components/resturant-menu/resturant-menu.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,7 @@ import { ResturantMenuComponent } from './components/resturant-menu/resturant-me
     MatGridListModule,
     ScrollDispatchModule
   ],
-  declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent],
+  declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent, OrderConfirmationComponent],
   exports: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent]
 })
 export class CutomerModule { }

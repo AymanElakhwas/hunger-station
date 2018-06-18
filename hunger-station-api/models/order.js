@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 //Setting up order schema
 const orderSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     customerName: String,
     customerTel: String,
     customerAddress: {

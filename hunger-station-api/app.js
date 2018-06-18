@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 //Routing configs
 const restaurantRoutes = require('./routes/restaurant')
 const customerRoutes = require('./routes/customer')
+const orderRoutes = require('./routes/order')
 
 //Mongoos connection
 mongoose.connect('mongodb://admin:admin1@ds263670.mlab.com:63670/hunger-station-db');
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
 //Routing requests
 app.use("/restaurants", restaurantRoutes);
 app.use("/api/customers", customerRoutes);
+app.use("/api/orders", orderRoutes);
 
 //Error handlers
 app.use((req, res, next) => {

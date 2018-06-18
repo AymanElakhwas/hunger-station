@@ -16,7 +16,11 @@ router.post('/auth', (req, res, next) => {
             const token = jwt.sign(JSON.stringify(cus), 'secret');
             res.json({ 'token': token });
         } else {
-            res.json({ 'message': 'Invalid Credentials' });
+            res.json({
+                'error': {
+                    'message': 'Invalid Credentials'
+                }
+            });
         }
     });
 });

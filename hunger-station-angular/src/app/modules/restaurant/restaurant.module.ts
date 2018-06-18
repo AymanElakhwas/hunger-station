@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 
 import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { RouterModule } from '@angular/router';
-//import { ListRestaurantComponent } from './components/list-restaurant/list-restaurant.component';
+
 
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
 import { RestaurantService } from './service/restaurant-service';
-import { ResturantOrdersComponent } from './components/restaurant-orders/resturant-orders.component';
+
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -19,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 @NgModule({
     imports: [
@@ -28,16 +30,16 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatCardModule,
         MatGridListModule,
         MatButtonModule,
-       
         MatExpansionModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
         MatSelectModule,
         MatTableModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatListModule
     ],
-    declarations: [ResturantOrdersComponent],
-    exports: [ResturantOrdersComponent],
+    declarations: [MenuItemComponent],
+    exports: [MenuItemComponent],
     providers: [RestaurantService]
 })
 export class RestaurantModule { }

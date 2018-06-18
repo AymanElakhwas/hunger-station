@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import '@angular/platform-browser-dynamic';
+
+import { store } from '../../redux/store';
+import { reducer } from '../../redux/reducer';
 
 @Component({
   selector: 'app-resturant-menu',
@@ -11,34 +14,16 @@ export class ResturantMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.orderItems = store.getState().data;
+    this.unsubscribe = store.subscribe(()=>
+      {
+        console.log('Subscriper Received the new Ordered item list !!');
+        this.orderItems = store.getState().data;
+        for(let itms of this.orderItems){
+          console.log(itms);
+        }  
+      });
   }
-
-  foods: any[] = [
-    {name: 'Sweet', rating: 'pleasant taste.', img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'},
-    {name: 'Sour', rating: ' taste of acids', img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'},
-    {name: 'Salty', rating: 'taste of alkali metal ions such as sodium ...' , img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'},
-  ];
-
-  foodsv2: any[] = [
-    {name: 'Sweet Book', rating: 'pleasant taste.', img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'},
-    {name: 'Sour Book', rating: ' taste of acids', img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'},
-    {name: 'Salty Book', rating: 'taste of alkali metal ions such as sodium ...' , img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'},
-    {name: 'Sweet Book', rating: 'pleasant taste.', img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'},
-    {name: 'Sour Book', rating: ' taste of acids', img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'},
-    {name: 'Salty Book', rating: 'taste of alkali metal ions such as sodium ...' , img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'},    
-    {name: 'Sweet Book', rating: 'pleasant taste.', img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'},
-    {name: 'Sour Book', rating: ' taste of acids', img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'},
-    {name: 'Salty Book', rating: 'taste of alkali metal ions such as sodium ...' , img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'},
-    {name: 'Sweet Book', rating: 'pleasant taste.', img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'},
-    {name: 'Sour Book', rating: ' taste of acids', img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'},
-    {name: 'Salty Book', rating: 'taste of alkali metal ions such as sodium ...' , img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'},
-    {name: 'Sweet Book', rating: 'pleasant taste.', img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'},
-    {name: 'Sour Book', rating: ' taste of acids', img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'},
-    {name: 'Salty Book', rating: 'taste of alkali metal ions such as sodium ...' , img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'},
-    {name: 'Sweet Book', rating: 'pleasant taste.', img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'},
-    {name: 'Sour Book', rating: ' taste of acids', img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'},
-    {name: 'Salty Book', rating: 'taste of alkali metal ions such as sodium ...' , img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'},                
-  ];
 
   tiles = [
     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
@@ -46,5 +31,45 @@ export class ResturantMenuComponent implements OnInit {
     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
   ];
+
+
+  menuItems: any[] = [
+    {   name: 'Shawrma', 
+        desc: 'Arabic Grilled Shawrma',
+        price: 16, 
+        img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'
+    },
+    {   name: 'Kebab', 
+        desc: 'Arabic Grilled Kebab',
+        price: 22, 
+        img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'
+    },
+    {   name: 'Broasted', 
+        desc: 'Fried Chicken',
+        price: 18, 
+        img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'
+    }
+  ];
+
+
+  handleBtnAdd(value){
+
+    let actionData = 
+      {type: 'ADD_ORDER_ITEM', 
+       data: 
+            {   name: this.menuItems[value].name, 
+                qty: 1, 
+                price: this.menuItems[value].price
+            }
+      };
+
+    store.dispatch(actionData);
+  }
+
+  orderItems; unsubscribe;
+
+  ngOnDestroy(){ this.unsubscribe(); }
+
+
 
 }

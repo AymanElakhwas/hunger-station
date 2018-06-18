@@ -20,14 +20,14 @@
 
       <h3 mat-subheader>Menu Items</h3>
 
-      <mat-list-item *ngFor="let food of foodsv2">
-        <img mat-list-avatar src="{{food.img}}" alt="{{food.rating}}">
-        <h3 mat-line> {{food.name}} </h3>
+      <mat-list-item *ngFor="let mItem of menuItems;let num=index">
+        <img mat-list-avatar src="{{mItem.img}}" alt="{{mItem.name}}">
+        <h3 mat-line> {{mItem.name}} </h3>
         <p mat-line class="demo-2">
-          {{food.rating}}
+          {{mItem.desc}}
         </p>
-        <div> $2.00 </div>
-        <button mat-icon-button>
+        <div> ${{mItem.price}} </div>
+        <button mat-icon-button (click)="handleBtnAdd(num)">
           <mat-icon>add_circle_outline</mat-icon>
         </button>
         <mat-divider></mat-divider>

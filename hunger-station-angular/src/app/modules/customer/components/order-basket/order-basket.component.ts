@@ -7,7 +7,6 @@ import { OrderBasket } from '../../interfaces/order-basket';
   styleUrls: ['./order-basket.component.css']
 })
 export class OrderBasketComponent {
-  // private basketImg = require('./images/basket.png');
   private orderBasket: OrderBasket = {
     subtotal: 143,
     delivery: 10,
@@ -21,6 +20,12 @@ export class OrderBasketComponent {
     ]
   }
 
-  // private items: BasketMenuItem[] = [];
+  // private orderBasket: OrderBasket = {
+  //   subtotal: 143,
+  //   delivery: 10,
+  //   total: 153,
+  //   items: [
+  //   ]
+  // }
 
 }

@@ -19,7 +19,11 @@ export class LoginComponent {
   onLogin(credentials) {
     this.loading = true;
     this.auth.login(credentials).subscribe(data => {
-      this.router.navigate([this.nextPageUrl]);
+      if (data.token)
+        this.router.navigate([this.nextPageUrl]);
+      if (data.error) {
+        this.error = "Wrong username or password";
+      }
     },
       error => {
         this.error = error;

@@ -6,6 +6,7 @@ import { CutomerModule } from './modules/customer/customer.module'
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 
+import{ RestaurantModule } from './modules/restaurant/restaurant.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   imports: [
     BrowserModule,
+    RestaurantModule,
     CutomerModule,
     RouterModule,
     AppRoutingModule

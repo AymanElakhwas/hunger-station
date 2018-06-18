@@ -12,9 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SampleComponent } from './components/sample/sample.component';
 import { RouterModule } from '@angular/router';
 
-import {MatListModule, MatIconModule, MatCardModule} from '@angular/material';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {ScrollDispatchModule} from '@angular/cdk/scrolling';
+import { MatListModule, MatIconModule, MatCardModule } from '@angular/material';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { ResturantMenuComponent } from './components/resturant-menu/resturant-menu.component';
 
 @NgModule({
@@ -28,10 +28,10 @@ import { ResturantMenuComponent } from './components/resturant-menu/resturant-me
     MatFormFieldModule,
     HttpClientModule,
     RouterModule,
-    MatListModule, 
-    MatIconModule, 
-    MatCardModule, 
-    MatGridListModule, 
+    MatListModule,
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule,
     ScrollDispatchModule
   ],
   declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent],

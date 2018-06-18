@@ -12,4 +12,46 @@
     width: 78%;
 }
 
+.place-order-btn {
+    width:100%;
+}
 
+
+.qty{
+    color:darkred
+    
+}
+
+.name {
+    width:70%; 
+    margin:0px 25px;
+}
+
+.price {
+    color: navy;
+    width: 10%;
+}
+
+
+.qty, .name, .price, .summary, .summary-price{
+    font-family: sans-serif !important; 
+    font-size: 10pt;
+    font-weight: 100;
+}
+
+.summary {
+    margin-right: 50%;
+    width:80px;
+    font-weight: 400;
+    font-size: 12pt;
+}
+
+.summary-price {
+    font-size: 10pt;
+    font-weight: 400;
+}
+
+.total-price {
+    font-weight: bold;
+    font-size: 2em;
+}

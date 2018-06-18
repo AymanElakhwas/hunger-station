@@ -16,10 +16,30 @@
     <mat-card-title class="basket-title">Your Order</mat-card-title>
   </mat-card-header>
   <mat-divider></mat-divider>
-  <img mat-card-image class="img" src="{{basketImg}}" alt="Order Basket">
-  <mat-card-content>
-    <p class="hint">
-      Add menu items into your basket
-    </p>
-  </mat-card-content>
+  <mat-list>
+    <mat-list-item *ngFor="let item of items">
+      <span class="qty"> {{item.qty}}x </span>
+      <div class="name"> {{item.name}} </div>
+      <span class="price"> {{item.price}}.00 </span>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-list-item mat-line>
+      <div class="summary">Subtotal</div>
+      <span class="summary-price">{{subtotal}}.00</span>
+    </mat-list-item>
+    <mat-list-item mat-line>
+      <div class="summary">Delivery</div>
+      <span class="summary-price">{{delivery}}.00</span>
+    </mat-list-item>
+    <mat-list-item mat-line>
+      <div class="summary">Total</div>
+      <span class="total-price">{{total}}.00</span>
+    </mat-list-item>
+
+  </mat-list>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" class="place-order-btn">Place Order</button>
+  </mat-card-actions>
+
 </mat-card>

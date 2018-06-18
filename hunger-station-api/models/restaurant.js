@@ -4,11 +4,12 @@ const mongoose = require('mongoose');
 const restaurantSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: String,
-    tel: String,
+    phone: String,
     email: String,
+    image_url: String,
     address: {
-        city: String,
         street: String,
+        city: String,
         state: String,
         zip: String,
         country: String

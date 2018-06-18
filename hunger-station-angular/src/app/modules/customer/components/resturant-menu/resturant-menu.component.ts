@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 
 import { CustOrderActionsService } from '../../redux/actions';
 
+import { RestaurantService } from '../../services/restaurant-service';
+
 @Component({
   selector: 'app-resturant-menu',
   templateUrl: './resturant-menu.component.html',
@@ -16,10 +18,13 @@ import { CustOrderActionsService } from '../../redux/actions';
 })
 export class ResturantMenuComponent implements OnInit {
 
-  resturantId:string = '123456789';
+  resturantId:string = '5b26cf7bb117e39f2849c97c';
+  restaurantName: string = 'restaurant name';
+  restaurantImg: string = '';
+  menuItems: any[] = [];
 
   @select('data') orderItemsObservable: Observable<OrderState>;
-  constructor(private custOrdServ: CustOrderActionsService) {}
+  constructor(private restaurServ:RestaurantService, private custOrdServ: CustOrderActionsService) {}
 
   ngOnInit() {
     this.orderItemsObservable.subscribe((data)=>
@@ -33,64 +38,24 @@ export class ResturantMenuComponent implements OnInit {
         // }  
 
       });
+
+      this.restaurServ.findOne(this.resturantId).subscribe( (data) => {
+        if(data['error']){
+            this.menuItems = [];
+        }else{
+            this.menuItems = data['menu_item'];
+            this.restaurantImg = data['image_url'];
+            this.restaurantName = data['name'];
+        }
+      });
   }
 
-  tiles = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
-
-
-  menuItems: any[] = [
-    {   name: 'Shawrma', 
-        desc: 'Arabic Grilled Shawrma',
-        price: 16, 
-        img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'
-    },
-    {   name: 'Kebab', 
-        desc: 'Arabic Grilled Kebab',
-        price: 22, 
-        img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'
-    },
-    {   name: 'Broasted', 
-        desc: 'Fried Chicken',
-        price: 18, 
-        img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'
-    },
-    {   name: 'Shawrma', 
-        desc: 'Arabic Grilled Shawrma',
-        price: 16, 
-        img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'
-    },
-    {   name: 'Kebab', 
-        desc: 'Arabic Grilled Kebab',
-        price: 22, 
-        img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'
-    },
-    {   name: 'Broasted', 
-        desc: 'Fried Chicken',
-        price: 18, 
-        img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'
-    },
-    {   name: 'Shawrma', 
-        desc: 'Arabic Grilled Shawrma',
-        price: 16, 
-        img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'
-    },
-    {   name: 'Kebab', 
-        desc: 'Arabic Grilled Kebab',
-        price: 22, 
-        img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'
-    },
-    {   name: 'Broasted', 
-        desc: 'Fried Chicken',
-        price: 18, 
-        img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'
-    }        
-  ];
-
+//   tiles = [
+//     {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
+//     {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
+//     {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
+//     {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+//   ];
 
   handleBtnAdd(value){
 

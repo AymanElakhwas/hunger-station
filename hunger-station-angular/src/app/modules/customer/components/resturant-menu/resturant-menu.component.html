@@ -2,8 +2,11 @@
 
 <mat-grid-list cols="4" rowHeight="16:6">
 
-  <mat-grid-tile colspan="4" rowspan="1" [style.background]="'black'">
-    One
+  <mat-grid-tile colspan="4" rowspan="1" >
+    <figure style="position: absolute;right: 0px;top: 0px;">
+        <img src="{{restaurantImg}}" alt="{{restaurantName}}" width="80" height="80"/>
+        <figcaption>{{restaurantName}}</figcaption>
+    </figure>    
   </mat-grid-tile>
 
   <!-- <mat-grid-tile

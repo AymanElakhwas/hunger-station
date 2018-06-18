@@ -19,7 +19,8 @@ const orderSchema = mongoose.Schema({
         name: String,
         qty: Number,
         price: Number
-    }]
+    }],
+    order_status: String
 });
 
 module.exports = mongoose.model('order', orderSchema);

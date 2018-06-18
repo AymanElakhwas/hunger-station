@@ -58,7 +58,37 @@ export class ResturantMenuComponent implements OnInit {
         desc: 'Fried Chicken',
         price: 18, 
         img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'
-    }
+    },
+    {   name: 'Shawrma', 
+        desc: 'Arabic Grilled Shawrma',
+        price: 16, 
+        img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'
+    },
+    {   name: 'Kebab', 
+        desc: 'Arabic Grilled Kebab',
+        price: 22, 
+        img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'
+    },
+    {   name: 'Broasted', 
+        desc: 'Fried Chicken',
+        price: 18, 
+        img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'
+    },
+    {   name: 'Shawrma', 
+        desc: 'Arabic Grilled Shawrma',
+        price: 16, 
+        img: 'https://cartoonface.files.wordpress.com/2010/02/cartoon-face-avatar.jpg'
+    },
+    {   name: 'Kebab', 
+        desc: 'Arabic Grilled Kebab',
+        price: 22, 
+        img:'http://media.merchantcircle.com/37104027/Picture%20142_full.png'
+    },
+    {   name: 'Broasted', 
+        desc: 'Fried Chicken',
+        price: 18, 
+        img:'https://cdn2.iconfinder.com/data/icons/male-female-faces/154/head-female-beauty-skin-face-avatar-head-512.png'
+    }        
   ];
 
 

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Restaurant } from "../interface/restaurant";
+import { Restaurant } from "../interfaces/restaurant";
 
 @Injectable()
 export class RestaurantService {
@@ -11,7 +11,7 @@ export class RestaurantService {
         return this.http.get('http://localhost:3000/restaurants');
     }
 
-    findOne(id:Number) {
+    findOne(id:string) {
         return this.http.get('http://localhost:3000/restaurants/' + id)
     }
 }

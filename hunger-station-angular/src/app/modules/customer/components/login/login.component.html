@@ -1,11 +1,19 @@
-<form #f="ngForm" (ngSubmit)="onLogin(f.value)" *ngIf="!auth.loggedIn()">
-  <mat-form-field>
-    <input matInput type="text" placeholder="Username" name="username" ngModel>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Password" name="password" ngModel>
-  </mat-form-field>
+<div class="container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title class="login-title">Login</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <form #f="ngForm" (ngSubmit)="onLogin(f.value)" *ngIf="!auth.loggedIn()" class="login-form">
+      <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="Email" name="username" ngModel>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <input matInput type="password" placeholder="Password" name="password" ngModel>
+      </mat-form-field>
 
-  <button mat-raised-button type="submit">Login</button>
-  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-</form>
+      <button mat-raised-button type="submit" color="primary" class="full-width">Login</button>
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    </form>
+  </mat-card>
+</div>

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { CustomerAuthenticationService } from '../../services/customer-authentication-service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [CustomerAuthenticationService]
+  providers: [CustomerAuthenticationService, JwtHelper]
 })
 export class LoginComponent {
   loading = false;

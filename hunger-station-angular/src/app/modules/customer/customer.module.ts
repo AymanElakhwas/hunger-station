@@ -17,6 +17,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { ResturantMenuComponent } from './components/resturant-menu/resturant-menu.component';
 
+import { NgReduxModule, NgRedux } from 'ng2-redux';
+import { store } from './redux/store';
+import { OrderState } from './interfaces/OrderState';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -32,9 +37,14 @@ import { ResturantMenuComponent } from './components/resturant-menu/resturant-me
     MatIconModule,
     MatCardModule,
     MatGridListModule,
-    ScrollDispatchModule
+    ScrollDispatchModule,
+    NgReduxModule
   ],
   declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent],
   exports: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent]
 })
-export class CutomerModule { }
+export class CutomerModule {
+  constructor(ngRedux: NgRedux<OrderState>) {
+    ngRedux.provideStore(store)
+  }
+}

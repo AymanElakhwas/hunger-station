@@ -1,8 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import '@angular/platform-browser-dynamic';
 
-import { store } from '../../redux/store';
-import { reducer } from '../../redux/reducer';
+import { OrderState } from '../../interfaces/OrderState';
+
+import { NgRedux, select } from 'ng2-redux';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-resturant-menu',
@@ -11,16 +14,17 @@ import { reducer } from '../../redux/reducer';
 })
 export class ResturantMenuComponent implements OnInit {
 
-  constructor() { }
+  @select('data') orderItemsObservable: Observable<OrderState>;
+  constructor(private ngRedux: NgRedux<OrderState>) {}
 
   ngOnInit() {
-    this.orderItems = store.getState().data;
-    this.unsubscribe = store.subscribe(()=>
+    this.orderItemsObservable.subscribe((data)=>
       {
         console.log('Subscriper Received the new Ordered item list !!');
-        this.orderItems = store.getState().data;
-        for(let itms of this.orderItems){
-          console.log(itms);
+        // console.log(data);
+        // this.orderItems = store.getState().data;
+        for(let i=0; i<data['length']; i++){
+          console.log(data[i]);
         }  
       });
   }
@@ -63,13 +67,7 @@ export class ResturantMenuComponent implements OnInit {
             }
       };
 
-    store.dispatch(actionData);
+    this.ngRedux.dispatch(actionData);
   }
-
-  orderItems; unsubscribe;
-
-  ngOnDestroy(){ this.unsubscribe(); }
-
-
 
 }

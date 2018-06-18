@@ -16,6 +16,10 @@ import { MatListModule, MatIconModule, MatCardModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { ResturantMenuComponent } from './components/resturant-menu/resturant-menu.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { NgReduxModule, NgRedux } from 'ng2-redux';
 import { store } from './redux/store';
@@ -24,32 +28,38 @@ import { OrderState } from './interfaces/OrderState';
 // import { OrderBasket } from './interfaces/order-basket';
 
 import { CustOrderActionsService } from './redux/actions';
+import { ListRestaurantComponent } from './list-restaurant/list-restaurant.component';
+import { RestaurantService } from './services/restaurant-service';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    CutomerRoutingModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatButtonModule,
-    MatInputModule,
-    MatFormFieldModule,
-    HttpClientModule,
-    RouterModule,
-    MatListModule,
-    MatIconModule,
-    MatCardModule,
-    MatGridListModule,
-    ScrollDispatchModule,
-    NgReduxModule
-  ],
-  declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent],
-  providers:[CustOrderActionsService],
-  exports: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent]
+    imports: [
+        CommonModule,
+        CutomerRoutingModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MatButtonModule,
+        MatInputModule,
+        MatFormFieldModule,
+        HttpClientModule,
+        RouterModule,
+        MatListModule,
+        MatIconModule,
+        MatCardModule,
+        MatGridListModule,
+        ScrollDispatchModule,
+        NgReduxModule,       
+        MatExpansionModule,
+        MatSelectModule,
+        MatTableModule,
+        MatPaginatorModule
+    ],
+    declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent],
+    providers: [CustOrderActionsService, RestaurantService],
+    exports: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent]
 })
 export class CutomerModule {
-  constructor(ngRedux: NgRedux<OrderState>) {
-    ngRedux.provideStore(store)
-  }
+    constructor(ngRedux: NgRedux<OrderState>) {
+        ngRedux.provideStore(store)
+    }
 }

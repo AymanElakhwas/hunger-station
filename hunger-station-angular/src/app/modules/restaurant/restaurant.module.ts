@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { RestaurantRoutingModule } from './restaurant-routing.module';
 import { RouterModule } from '@angular/router';
-import { ListRestaurantComponent } from './components/list-restaurant/list-restaurant.component';
+//import { ListRestaurantComponent } from './components/list-restaurant/list-restaurant.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
-import { RestaurantService } from './service/restaurant.-service';
+import { RestaurantService } from './service/restaurant-service';
 import { ResturantOrdersComponent } from './components/restaurant-orders/resturant-orders.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -29,8 +29,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatGridListModule,
         MatButtonModule,
        
-       
-        
         MatExpansionModule,
         MatFormFieldModule,
         BrowserAnimationsModule,
@@ -38,8 +36,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatTableModule,
         MatPaginatorModule
     ],
-    declarations: [ListRestaurantComponent, ResturantOrdersComponent],
-    exports: [ListRestaurantComponent, ResturantOrdersComponent],
+    declarations: [ResturantOrdersComponent],
+    exports: [ResturantOrdersComponent],
     providers: [RestaurantService]
 })
 export class RestaurantModule { }

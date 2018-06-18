@@ -38,14 +38,14 @@ router.get("/:restaurantId", (req, res, next) => {
             if (doc) {
                 res.status(200).json(doc);
             } else {
-                res.status(404).json({
+                res.status(200).json({
                     error: 'No entries found'
                 });
             }
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json({
+            res.status(200).json({
                 error: err
             });
         });

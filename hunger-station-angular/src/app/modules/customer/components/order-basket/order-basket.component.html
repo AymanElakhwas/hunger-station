@@ -1,4 +1,4 @@
-<mat-card class="basket-card" *ngIf="items.length == 0">
+<mat-card class="basket-card" *ngIf="orderBasket.items.length == 0">
   <mat-card-header>
     <mat-card-title class="basket-title">Your Order</mat-card-title>
   </mat-card-header>
@@ -11,13 +11,13 @@
   </mat-card-content>
 </mat-card>
 
-<mat-card class="basket-card" *ngIf="items.length > 0">
+<mat-card class="basket-card" *ngIf="orderBasket.items.length > 0">
   <mat-card-header>
     <mat-card-title class="basket-title">Your Order</mat-card-title>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-list>
-    <mat-list-item *ngFor="let item of items">
+    <mat-list-item *ngFor="let item of orderBasket.items">
       <span class="qty"> {{item.qty}}x </span>
       <div class="name"> {{item.name}} </div>
       <span class="price"> {{item.price}}.00 </span>
@@ -25,15 +25,15 @@
     </mat-list-item>
     <mat-list-item mat-line>
       <div class="summary">Subtotal</div>
-      <span class="summary-price">{{subtotal}}.00</span>
+      <span class="summary-price">{{orderBasket.subtotal}}.00</span>
     </mat-list-item>
     <mat-list-item mat-line>
       <div class="summary">Delivery</div>
-      <span class="summary-price">{{delivery}}.00</span>
+      <span class="summary-price">{{orderBasket.delivery}}.00</span>
     </mat-list-item>
     <mat-list-item mat-line>
       <div class="summary">Total</div>
-      <span class="total-price">{{total}}.00</span>
+      <span class="total-price">{{orderBasket.total}}.00</span>
     </mat-list-item>
 
   </mat-list>

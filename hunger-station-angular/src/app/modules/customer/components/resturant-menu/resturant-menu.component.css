@@ -5,3 +5,8 @@ mat-list {
     /* border: 3px solid green; */
     overflow: auto;    
   }
+
+order-basket {
+  width: 90%;
+  height: 100%;
+}

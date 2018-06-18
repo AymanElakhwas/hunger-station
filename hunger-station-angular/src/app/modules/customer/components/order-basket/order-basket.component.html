@@ -1,3 +1,25 @@
-<div>
-  order
-</div>
+<mat-card class="basket-card" *ngIf="items.length == 0">
+  <mat-card-header>
+    <mat-card-title class="basket-title">Your Order</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <img mat-card-image class="img" src="{{basketImg}}" alt="Order Basket">
+  <mat-card-content>
+    <p class="hint">
+      Add menu items into your basket
+    </p>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="basket-card" *ngIf="items.length > 0">
+  <mat-card-header>
+    <mat-card-title class="basket-title">Your Order</mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <img mat-card-image class="img" src="{{basketImg}}" alt="Order Basket">
+  <mat-card-content>
+    <p class="hint">
+      Add menu items into your basket
+    </p>
+  </mat-card-content>
+</mat-card>

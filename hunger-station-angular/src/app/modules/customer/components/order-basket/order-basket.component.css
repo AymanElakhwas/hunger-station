@@ -1,0 +1,15 @@
+.basket-card {
+    max-width: 300px;
+    margin-top: 40px;
+}
+
+.basket-title {
+    font-size: 1.7em;
+}
+
+.hint {
+    margin: auto;
+    width: 78%;
+}
+
+

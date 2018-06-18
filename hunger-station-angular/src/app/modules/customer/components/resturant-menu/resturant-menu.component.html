@@ -1,11 +1,8 @@
 <!-- <div style="margin:70px;"></div> -->
 
-<mat-grid-list cols="4" rowHeight="4:3">
+<mat-grid-list cols="4" rowHeight="16:6">
 
-  <mat-grid-tile
-      colspan="4"
-      rowspan="1"
-      [style.background]="'lightpink'">
+  <mat-grid-tile colspan="4" rowspan="1" [style.background]="'black'">
     One
   </mat-grid-tile>
 
@@ -16,37 +13,32 @@
     Two
   </mat-grid-tile> -->
 
-  <mat-grid-tile
-      colspan="3"
-      rowspan="2"
-      [style.background]="'lightblue'">
+  <mat-grid-tile colspan="3" rowspan="5">
 
-      <!-- <mat-card> -->
-        <mat-list cdk-scrollable>  
-       
-          <h3 mat-subheader>Menu Items</h3>
-          
-          <mat-list-item *ngFor="let food of foodsv2">
-            <img mat-list-avatar src="{{food.img}}" alt="{{food.rating}}">
-            <h3 mat-line> {{food.name}} </h3>
-            <p mat-line class="demo-2">
-              {{food.rating}}
-            </p>
-            <div> $2.00 </div>
-            <button mat-icon-button>
-               <mat-icon>add_circle_outline</mat-icon>
-            </button>  
-          </mat-list-item>
-     
-        </mat-list>
-     <!-- </mat-card> -->
+    <!-- <mat-card> -->
+    <mat-list cdk-scrollable>
+
+      <h3 mat-subheader>Menu Items</h3>
+
+      <mat-list-item *ngFor="let food of foodsv2">
+        <img mat-list-avatar src="{{food.img}}" alt="{{food.rating}}">
+        <h3 mat-line> {{food.name}} </h3>
+        <p mat-line class="demo-2">
+          {{food.rating}}
+        </p>
+        <div> $2.00 </div>
+        <button mat-icon-button>
+          <mat-icon>add_circle_outline</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+
+    </mat-list>
+    <!-- </mat-card> -->
   </mat-grid-tile>
-  
-  <mat-grid-tile
-      colspan="1"
-      rowspan="2"
-      [style.background]="'lightgreen'">
-    Three
+
+  <mat-grid-tile colspan="1" rowspan="3">
+    <order-basket></order-basket>
   </mat-grid-tile>
 
   <!-- <mat-grid-tile

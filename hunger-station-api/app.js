@@ -4,8 +4,12 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+
 //Routing configs
 const restaurantRoutes = require('./routes/restaurant')
+const customerRoutes = require('./routes/customer')
+
+app.listen(3000, () => { console.log('listening on port 3000') });
 
 //Mongoos connection
 mongoose.connect(
@@ -35,6 +39,7 @@ app.use((req, res, next) => {
 
 //Routing requests
 app.use("/restaurants", restaurantRoutes);
+app.use("/api/customers", customerRoutes);
 
 //Error handlers
 app.use((req, res, next) => {

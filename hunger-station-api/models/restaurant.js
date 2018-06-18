@@ -17,7 +17,7 @@ const restaurantSchema = mongoose.Schema({
         type: { type: String, default: "Point" },
         coordinates: [Number]
     },
-    menu_item:[]
+    menu_item: []
 });
 
 //Adding geo-location index

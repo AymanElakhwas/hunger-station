@@ -8,7 +8,7 @@ export class CustomerAuthenticationService {
     constructor(private http: HttpClient) { }
 
     login(credentials: Credentials) {
-        return this.http.post<any>('http://localhost:8080/api/customer/auth', credentials)
+        return this.http.post<any>('http://localhost:3000/api/customers/auth', credentials)
             .pipe(map((res: any) => {
                 return res.json();
             })).subscribe(res => {

@@ -16,4 +16,25 @@ router.post('/', (req, res, next) => {
     });
 });
 
+router.get('/restaurants/:restaurantId', (req, res, next) => {
+    Order.find({"restaurantId" : req.params.restaurantId})
+        .exec()
+        .then(docs => {
+            console.log(docs);
+            if (docs.length > 0) {
+                res.status(200).json(docs);
+            } else {
+                res.status(404).json({
+                    error: 'No entries found'
+                });
+            }
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+});
+
 module.exports = router;

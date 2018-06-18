@@ -9,6 +9,16 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { RestaurantService } from './service/restaurant.-service';
+import { ResturantOrdersComponent } from './components/restaurant-orders/resturant-orders.component';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+
+import { MatExpansionModule } from '@angular/material/expansion';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     imports: [
@@ -17,10 +27,19 @@ import { RestaurantService } from './service/restaurant.-service';
         RouterModule,
         MatCardModule,
         MatGridListModule,
-        MatButtonModule
+        MatButtonModule,
+       
+       
+        
+        MatExpansionModule,
+        MatFormFieldModule,
+        BrowserAnimationsModule,
+        MatSelectModule,
+        MatTableModule,
+        MatPaginatorModule
     ],
-    declarations: [ListRestaurantComponent],
-    exports: [ListRestaurantComponent],
+    declarations: [ListRestaurantComponent, ResturantOrdersComponent],
+    exports: [ListRestaurantComponent, ResturantOrdersComponent],
     providers: [RestaurantService]
 })
 export class RestaurantModule { }

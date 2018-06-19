@@ -7,7 +7,7 @@ import { ResturantOrdersComponent } from './components/resturant-orders/resturan
 const routes: Routes = [
     
     { path: 'menu-items', component: MenuItemComponent },
-    { path: 'resturant-orders', component: ResturantOrdersComponent }
+    { path: 'restaurant-orders', component: ResturantOrdersComponent }
     // otherwise redirect to home
   ];
   

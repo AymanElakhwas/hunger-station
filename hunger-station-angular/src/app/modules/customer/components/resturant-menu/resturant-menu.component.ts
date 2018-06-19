@@ -20,12 +20,12 @@ import { RestaurantService } from '../../services/restaurant-service';
 })
 export class ResturantMenuComponent implements OnInit {
 
-  resturantId:string = '5b26cf7bb117e39f2849c97c';
+  resturantId:string = '';
   restaurantName: string = 'restaurant name';
   restaurantImg: string = '';
   menuItems: any[] = [];
 
-  @select('data') orderItemsObservable: Observable<OrderState>;
+  // @select('data') orderItemsObservable: Observable<OrderState>;
   constructor(
       private restaurServ:RestaurantService, 
       private custOrdServ: CustOrderActionsService,
@@ -49,18 +49,11 @@ export class ResturantMenuComponent implements OnInit {
       }
 
   ngOnInit() {
-    this.orderItemsObservable.subscribe((data)=>
-      {
-        console.log('Subscriper Received the new Ordered item list !!');
-        console.log(data);
-
-        // this.orderItems = store.getState().data;
-        // for(let i=0; i<data['length']; i++){
-        //   console.log(data[i]);
-        // }  
-
-      });
-
+    // this.orderItemsObservable.subscribe((data)=>
+    //   {
+    //     console.log('Subscriper Received the new Ordered item list !!');
+    //     console.log(data);
+    //   });
   }
 
 //   tiles = [

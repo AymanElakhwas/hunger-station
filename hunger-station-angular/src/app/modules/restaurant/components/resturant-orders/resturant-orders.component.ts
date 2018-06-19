@@ -10,7 +10,7 @@ import {RestaurantOrdersService} from '../../service/restaurant-orders-service'
 })
 export class ResturantOrdersComponent implements OnInit {
 
-  resturantId:string = 'restaurant_id0';
+  resturantId:string = '';
   restaurantOrders;
 
   // panelOpenState: boolean = false;
@@ -33,7 +33,7 @@ export class ResturantOrdersComponent implements OnInit {
   ngOnInit() {
     
     // this.dataSource.paginator = this.paginator;
-
+    this.resturantId = localStorage.getItem('restaurantId');
     this.restaurOrderServ.getOrdersByRestaurantId(this.resturantId).subscribe( (data) => {
       if(data['error']){
           this.restaurantOrders = [];

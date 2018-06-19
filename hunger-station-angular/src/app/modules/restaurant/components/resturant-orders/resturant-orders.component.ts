@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
-import {RestaurantOrdersService} from '../../service/restaurant-orders-service'
+import { RestaurantOrdersService } from '../../service/restaurant-orders-service'
 
 @Component({
   selector: 'app-resturant-orders',
@@ -10,35 +10,35 @@ import {RestaurantOrdersService} from '../../service/restaurant-orders-service'
 })
 export class ResturantOrdersComponent implements OnInit {
 
-  resturantId:string = '';
+  resturantId: string = '5b26cf7bb117e39f2849c979';
   restaurantOrders;
 
   // panelOpenState: boolean = false;
 
   orderActions = [
-    {value: 'cancel-0', viewValue: 'Cancel'},
-    {value: 'pending-1', viewValue: 'Pending'},
-    {value: 'serve-2', viewValue: 'Serve'},
-    {value: 'inprogress-3', viewValue: 'In Progress'},
-    {value: 'delivered-4', viewValue: 'Delivered'},
+    { value: 'cancel-0', viewValue: 'Cancel' },
+    { value: 'pending-1', viewValue: 'Pending' },
+    { value: 'serve-2', viewValue: 'Serve' },
+    { value: 'inprogress-3', viewValue: 'In Progress' },
+    { value: 'delivered-4', viewValue: 'Delivered' },
   ];
 
 
-  constructor(private restaurOrderServ: RestaurantOrdersService) { 
+  constructor(private restaurOrderServ: RestaurantOrdersService) {
 
   }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    
+
     // this.dataSource.paginator = this.paginator;
-    this.resturantId = localStorage.getItem('restaurantId');
-    this.restaurOrderServ.getOrdersByRestaurantId(this.resturantId).subscribe( (data) => {
-      if(data['error']){
-          this.restaurantOrders = [];
-      }else{
-          this.restaurantOrders = data;
+    // this.resturantId = localStorage.getItem('restaurantId');
+    this.restaurOrderServ.getOrdersByRestaurantId(this.resturantId).subscribe((data) => {
+      if (data['error']) {
+        this.restaurantOrders = [];
+      } else {
+        this.restaurantOrders = data;
       }
     });
 
@@ -47,6 +47,12 @@ export class ResturantOrdersComponent implements OnInit {
   displayedColumns = ['name', 'price', 'qty'];
   // dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
 
+  serveMeClicked(order) {
+    console.log("Updating Order Status for :" + order);
+    let newOrder = Object.assign(order);
+    newOrder.order_status = "SERVED";
+    this.restaurOrderServ.updateOrderStatus(order).subscribe(data => { order.order_status = "SERVED"; });
+  }
 }
 
 

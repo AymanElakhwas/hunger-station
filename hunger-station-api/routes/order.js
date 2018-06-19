@@ -4,7 +4,9 @@ const Order = require("../models/order");
 
 
 router.post('/', (req, res, next) => {
+    req.body.order_status = "NOT SERVED";
     Order.create(req.body, function (err, cus) {
+
         if (err) {
             console.log(err);
             res.status(500).json({
@@ -17,7 +19,7 @@ router.post('/', (req, res, next) => {
 });
 
 router.put('/:id', (req, res, next) => {
-    Order.updateOne(req.params.id, req.body, function (err, cus) {
+    Order.updateOne({ "_id": req.params.id }, req.body, function (err, cus) {
         if (err) {
             console.log(err);
             res.status(500).json({
@@ -28,7 +30,6 @@ router.put('/:id', (req, res, next) => {
         }
     });
 });
-
 
 router.get('/restaurants/:restaurantId', (req, res, next) => {
     Order.find({ "restaurantId": req.params.restaurantId })

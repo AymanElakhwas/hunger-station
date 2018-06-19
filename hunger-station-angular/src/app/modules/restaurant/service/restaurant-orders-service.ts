@@ -11,7 +11,7 @@ export class RestaurantOrdersService {
   }
 
   updateOrderStatus(order) {
-    return this.http.put('http://localhost:3000/api/orders/' + order.id, order);
+    return this.http.put('http://localhost:3000/api/orders/' + order._id, order);
   }
 
 

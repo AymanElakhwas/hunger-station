@@ -15,5 +15,5 @@ export interface Restaurant{
         type: { type: String },
         coordinates: [Number]
     },
-    menu_item: {}
+    menu_item: any[]
 }

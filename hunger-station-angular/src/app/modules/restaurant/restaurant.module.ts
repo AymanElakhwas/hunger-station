@@ -10,8 +10,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { RestaurantService } from './service/restaurant-service';
-
-
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 
@@ -24,7 +24,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { ResturantOrdersComponent } from './components/resturant-orders/resturant-orders.component';
 
-import {RestaurantOrdersService} from './service/restaurant-orders-service'
+import { RestaurantOrdersService } from './service/restaurant-orders-service'
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -40,10 +41,12 @@ import {RestaurantOrdersService} from './service/restaurant-orders-service'
         MatSelectModule,
         MatTableModule,
         MatPaginatorModule,
-        MatListModule
+        MatListModule,
+        FormsModule,
+        MatInputModule
     ],
     declarations: [MenuItemComponent, ResturantOrdersComponent],
     exports: [MenuItemComponent, ResturantOrdersComponent],
-    providers: [RestaurantService, RestaurantOrdersService]
+    providers: [RestaurantService, RestaurantOrdersService, { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }]
 })
 export class RestaurantModule { }

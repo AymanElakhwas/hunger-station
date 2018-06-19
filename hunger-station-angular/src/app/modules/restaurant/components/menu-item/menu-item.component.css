@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+.full-width {
+    width: 100%;
+}
+
+.mat-title{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.mat-list{
+    padding-top: 0px;
+}

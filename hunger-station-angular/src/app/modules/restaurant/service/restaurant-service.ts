@@ -10,4 +10,8 @@ export class RestaurantService {
     findOne(id:string) {
         return this.http.get('http://localhost:3000/restaurants/' + id)
     }
+
+    addMenuItem(newMenuItem: any, id: string){
+        return this.http.put('http://localhost:3000/restaurants/' + id, newMenuItem);
+    }
 }

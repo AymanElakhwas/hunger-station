@@ -1,14 +1,18 @@
 <div layout="column" layout-wrap>
-        <mat-card *ngFor="let restaurant of restaurants">
-                <mat-card-title>{{restaurant.name}}</mat-card-title>
-                <mat-card-content>
-                        <mat-card-subtitle>{{restaurant.address.street}}</mat-card-subtitle>
-                        <mat-card-subtitle>{{restaurant.address.city}}, {{restaurant.address.state}}</mat-card-subtitle>
-                </mat-card-content>
-                <mat-card-actions>
-                        <a mat-button routerLink="/restaurant-menu/{{restaurant._id}}">View the menu</a>
+    <mat-card *ngFor="let restaurant of restaurants">
+        <mat-card-title>{{restaurant.name}}</mat-card-title>
+        <mat-card-content>
+            <mat-card-subtitle>{{restaurant.address.street}}</mat-card-subtitle>
+            <mat-card-subtitle>{{restaurant.address.city}}, {{restaurant.address.state}}</mat-card-subtitle>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button routerLink="/restaurant-menu/{{restaurant._id}}">View the menu</a>
 
-                </mat-card-actions>
-        </mat-card>
-
+        </mat-card-actions>
+    </mat-card>
+</div>
+<!-- pagination: only implemented when location access is allowed -->
+<div style="clear: left" *ngIf="longitude != 0 && this.latitude != 0">
+    <button [disabled]="page<2" mat-button (click)="previous()">Previous</button>
+    <button mat-button [disabled]="lastPage" (click)="nextPage()">Next</button>
 </div>

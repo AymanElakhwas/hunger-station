@@ -14,4 +14,8 @@ export class RestaurantService {
     findOne(id:string) {
         return this.http.get('http://localhost:3000/restaurants/' + id)
     }
+
+    getRestaurantsByCurrentLocation(longitude:number, latitude: number, page: number){
+        return this.http.get('http://localhost:3000/restaurants/' + longitude + "/"+ latitude+ "?page="+ page);
+    }
 }

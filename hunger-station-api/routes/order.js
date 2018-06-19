@@ -38,7 +38,7 @@ router.get('/restaurants/:restaurantId', (req, res, next) => {
             {'restaurantId' : req.params.restaurantId}, 
             {'$or':[
                 {'order_status':{'$exists':false}},
-                {'order_status':'NOTSERVED'},
+                {'order_status':'NOT SERVED'},
                 {'order_status': null}
             ]}
         ]}*/

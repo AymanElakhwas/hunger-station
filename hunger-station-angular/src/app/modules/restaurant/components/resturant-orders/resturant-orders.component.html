@@ -53,7 +53,7 @@
               {{ act.viewValue }}
             </mat-option>
         </mat-select> -->
-      <button mat-raised-button (click)="serveMeClicked(order)">Serve Me</button>
+      <button mat-raised-button [disabled]="order.order_status == 'SERVED'" (click)="serveMeClicked(order)">Serve Me</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

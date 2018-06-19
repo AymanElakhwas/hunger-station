@@ -24,6 +24,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { ResturantOrdersComponent } from './components/resturant-orders/resturant-orders.component';
 
+import {RestaurantOrdersService} from './service/restaurant-orders-service'
+
 @NgModule({
     imports: [
         CommonModule,
@@ -42,6 +44,6 @@ import { ResturantOrdersComponent } from './components/resturant-orders/resturan
     ],
     declarations: [MenuItemComponent, ResturantOrdersComponent],
     exports: [MenuItemComponent, ResturantOrdersComponent],
-    providers: [RestaurantService]
+    providers: [RestaurantService, RestaurantOrdersService]
 })
 export class RestaurantModule { }

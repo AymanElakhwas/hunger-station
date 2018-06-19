@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import '@angular/platform-browser-dynamic';
 
+import{ ActivatedRoute} from '@angular/router'; 
+
 import { OrderState } from '../../interfaces/OrderState';
 import { OrderBasket } from '../../interfaces/order-basket';
 
@@ -24,7 +26,27 @@ export class ResturantMenuComponent implements OnInit {
   menuItems: any[] = [];
 
   @select('data') orderItemsObservable: Observable<OrderState>;
-  constructor(private restaurServ:RestaurantService, private custOrdServ: CustOrderActionsService) {}
+  constructor(
+      private restaurServ:RestaurantService, 
+      private custOrdServ: CustOrderActionsService,
+      private route:ActivatedRoute) {
+
+        route.params.subscribe(params=>{
+          this.resturantId = params['id'];
+
+          this.restaurServ.findOne(this.resturantId).subscribe( (data) => {
+            if(data['error']){
+                this.menuItems = [];
+            }else{
+                this.menuItems = data['menu_item'];
+                this.restaurantImg = data['image_url'];
+                this.restaurantName = data['name'];
+            }
+          });
+
+        });
+
+      }
 
   ngOnInit() {
     this.orderItemsObservable.subscribe((data)=>
@@ -39,15 +61,6 @@ export class ResturantMenuComponent implements OnInit {
 
       });
 
-      this.restaurServ.findOne(this.resturantId).subscribe( (data) => {
-        if(data['error']){
-            this.menuItems = [];
-        }else{
-            this.menuItems = data['menu_item'];
-            this.restaurantImg = data['image_url'];
-            this.restaurantName = data['name'];
-        }
-      });
   }
 
 //   tiles = [

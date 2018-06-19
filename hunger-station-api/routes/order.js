@@ -32,7 +32,18 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.get('/restaurants/:restaurantId', (req, res, next) => {
-    Order.find({ "restaurantId": req.params.restaurantId })
+
+    Order.find(
+        /*{'$and':[
+            {'restaurantId' : req.params.restaurantId}, 
+            {'$or':[
+                {'order_status':{'$exists':false}},
+                {'order_status':'NOTSERVED'},
+                {'order_status': null}
+            ]}
+        ]}*/
+        {'restaurantId' : req.params.restaurantId}
+    )
         .exec()
         .then(docs => {
             console.log(docs);

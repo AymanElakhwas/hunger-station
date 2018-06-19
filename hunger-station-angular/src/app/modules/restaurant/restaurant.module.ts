@@ -20,7 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { ResturantOrdersComponent } from './components/resturant-orders/resturant-orders.component';
 
 @NgModule({
     imports: [
@@ -38,8 +40,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
         MatPaginatorModule,
         MatListModule
     ],
-    declarations: [MenuItemComponent],
-    exports: [MenuItemComponent],
+    declarations: [MenuItemComponent, ResturantOrdersComponent],
+    exports: [MenuItemComponent, ResturantOrdersComponent],
     providers: [RestaurantService]
 })
 export class RestaurantModule { }

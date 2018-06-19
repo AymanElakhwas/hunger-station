@@ -12,7 +12,7 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class LoginComponent {
   loading = false;
-  nextPageUrl: string = "/sample";
+  nextPageUrl: string = "/restaurants";
   error: any;
   constructor(private auth: CustomerAuthenticationService, private route: ActivatedRoute,
     private router: Router) { }

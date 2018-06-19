@@ -1,17 +1,14 @@
-
-
-
-<div  layout="column" layout-wrap>
+<div layout="column" layout-wrap>
         <mat-card *ngFor="let restaurant of restaurants">
                 <mat-card-title>{{restaurant.name}}</mat-card-title>
                 <mat-card-content>
-                    <mat-card-subtitle>{{restaurant.address.street}}</mat-card-subtitle>
-                    <mat-card-subtitle>{{restaurant.address.city}}, {{restaurant.address.state}}</mat-card-subtitle>
+                        <mat-card-subtitle>{{restaurant.address.street}}</mat-card-subtitle>
+                        <mat-card-subtitle>{{restaurant.address.city}}, {{restaurant.address.state}}</mat-card-subtitle>
                 </mat-card-content>
                 <mat-card-actions>
-                        <a mat-button routerLink="./restaurants/{{restaurant._id}}">View the menu</a>
-                    
+                        <a mat-button routerLink="/restaurant-menu/{{restaurant._id}}">View the menu</a>
+
                 </mat-card-actions>
-            </mat-card>
+        </mat-card>
 
 </div>

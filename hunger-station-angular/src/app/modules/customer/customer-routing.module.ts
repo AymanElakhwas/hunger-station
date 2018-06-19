@@ -9,7 +9,7 @@ import { ListRestaurantComponent } from './list-restaurant/list-restaurant.compo
 
 const routes: Routes = [
   { path: 'sample', component: SampleComponent },
-  { path: 'resturant-menu', component: ResturantMenuComponent },
+  { path: 'restaurant-menu/:id', component: ResturantMenuComponent },
   { path: 'restaurants', component: ListRestaurantComponent },
   { path: '', component: LoginComponent },
 

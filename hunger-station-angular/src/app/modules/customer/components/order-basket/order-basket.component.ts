@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrderBasket } from '../../interfaces/order-basket';
 import { OrderBasketService } from '../../services/order-basket-service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { select } from 'ng2-redux';
+import { Observable } from 'rxjs';
+import { OrderState } from '../../interfaces/OrderState';
 
 @Component({
   selector: 'order-basket',
@@ -9,30 +12,13 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./order-basket.component.css'],
   providers: [OrderBasketService]
 })
-export class OrderBasketComponent {
-  nextPageUrl: string = "/orderconfirmation";
-  private orderBasket: OrderBasket = {
-    customerName: 'Fred',
-    customerAddress: {
-      street: '2000 court st',
-      city: 'Fairfield',
-      state: 'IA',
-      zip: '52556',
-      country: 'US'
-    },
-    customerTel: '5106404588',
-    restaurantId: 'restaurant_id0',
-    subtotal: 143,
-    delivery: 10,
-    total: 153,
-    items: [
-      { name: 'Shawerma Pasta Casserole Pasta Casserole', price: 30, qty: 2 },
-      { name: 'Shawerma Pasta Casserole', price: 19, qty: 1 },
-      { name: 'Shawerma Pasta Casserole', price: 30, qty: 4 },
-      { name: 'Shawerma Pasta Casserole', price: 23, qty: 3 },
-      { name: 'Shawerma Pasta Casserole', price: 49, qty: 2 }
-    ]
-  }
+
+export class OrderBasketComponent implements OnInit {
+  nextPageUrl: string = "/orderdone";
+  private orderBasket: OrderBasket;
+
+
+  @select('data') orderItemsObservable: Observable<OrderBasket>;
 
   constructor(private basketService: OrderBasketService, private route: ActivatedRoute,
     private router: Router) { }
@@ -42,6 +28,18 @@ export class OrderBasketComponent {
       this.router.navigate([this.nextPageUrl]);
     });
   }
+
+
+  ngOnInit() {
+    this.orderItemsObservable.subscribe((orderBasket: OrderBasket) => {
+
+      this.orderBasket = orderBasket;
+      this.calculateSummaryPrices(this.orderBasket);
+      this.addCustomerDataToOrderBasket(this.orderBasket);
+    });
+
+  }
+
 
   calculateSummaryPrices(orderBasket: OrderBasket) {
     let subtotal = 0;
@@ -60,12 +58,4 @@ export class OrderBasketComponent {
     orderBasket.customerName = customer.name;
     orderBasket.customerTel = customer.tel;
   }
-  // private orderBasket: OrderBasket = {
-  //   subtotal: 143,
-  //   delivery: 10,
-  //   total: 153,
-  //   items: [
-  //   ]
-  // }
-
 }

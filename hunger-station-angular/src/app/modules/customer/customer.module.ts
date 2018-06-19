@@ -30,6 +30,7 @@ import { OrderState } from './interfaces/OrderState';
 import { CustOrderActionsService } from './redux/actions';
 import { ListRestaurantComponent } from './list-restaurant/list-restaurant.component';
 import { RestaurantService } from './services/restaurant-service';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 
 @NgModule({
@@ -48,15 +49,15 @@ import { RestaurantService } from './services/restaurant-service';
         MatCardModule,
         MatGridListModule,
         ScrollDispatchModule,
-        NgReduxModule,       
+        NgReduxModule,
         MatExpansionModule,
         MatSelectModule,
         MatTableModule,
         MatPaginatorModule
     ],
-    declarations: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent],
+    declarations: [LoginComponent, OrderBasketComponent, OrderConfirmationComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent],
     providers: [CustOrderActionsService, RestaurantService],
-    exports: [LoginComponent, OrderBasketComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent]
+    exports: [LoginComponent, OrderBasketComponent, SampleComponent, OrderConfirmationComponent, ResturantMenuComponent, ListRestaurantComponent]
 })
 export class CutomerModule {
     constructor(ngRedux: NgRedux<OrderState>) {

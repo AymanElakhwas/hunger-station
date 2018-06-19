@@ -5,10 +5,12 @@ import { SampleComponent } from './components/sample/sample.component';
 
 import { ResturantMenuComponent } from './components/resturant-menu/resturant-menu.component';
 import { ListRestaurantComponent } from './list-restaurant/list-restaurant.component';
+import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
 
 const routes: Routes = [
   { path: 'sample', component: SampleComponent },
+  { path: 'orderdone', component: OrderConfirmationComponent },
   { path: 'restaurant-menu/:id', component: ResturantMenuComponent },
   { path: 'restaurants', component: ListRestaurantComponent },
   { path: '', component: LoginComponent },

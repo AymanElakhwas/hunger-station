@@ -21,7 +21,6 @@ const routes: Routes = [
   { path: 'restaurant-menu/:id', component: ResturantMenuComponent, canActivate:[CustomerLoginGuard, CustomerPreOrderGuard] },
   { path: 'restaurants', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },
   { path: 'customer-login', component: LoginComponent, canActivate:[CustomerAlreadyLoggedGuard] },
-  { path: 'default', component: LoginComponent },
   //{ path: 'customer-home', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },
   { path: '', component: DefaultHMComponent },
   // otherwise redirect to home

@@ -32,8 +32,11 @@ export class RestaurantAuthenticationService {
     loggedIn() {
         const token = localStorage.getItem('restaurantToken');
         const restaurant = localStorage.getItem('currentRestaurnt');
-        if (!token || !restaurant)
+        if (!token || !restaurant){
             return false;
-        return true/*!this.jwtHelper.isTokenExpired(token)*/;
+        }
+        let isTokenExpired = this.jwtHelper.isTokenExpired(token);
+        console.log('Restaurant Auth - Token Expired? ' + isTokenExpired);
+        return !isTokenExpired;
     }
 }

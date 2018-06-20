@@ -21,7 +21,7 @@ export class MenuItemComponent implements OnInit {
             this.resturantId = JSON.parse(localStorage.getItem('currentRestaurnt')).id;
           }
       
-          console.log('Getting Orders for Restaurant ID: ' + this.resturantId);
+          console.log('Getting Menu Items for Restaurant ID: ' + this.resturantId);
 
         this.restaurantService.findOne(this.resturantId).subscribe((restaurant: Restaurant) => {
             this.restaurant = restaurant;

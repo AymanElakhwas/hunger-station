@@ -4,7 +4,7 @@
       <mat-card-title class="login-title">Login</mat-card-title>
     </mat-card-header>
     <mat-divider></mat-divider>
-    <form #f="ngForm" (ngSubmit)="onLogin(f.value)" *ngIf="!auth.loggedIn()" class="login-form">
+    <form #f="ngForm" (ngSubmit)="onLogin(f.value)" class="login-form">
       <mat-form-field class="full-width">
         <input matInput type="text" placeholder="Email" name="username" ngModel>
       </mat-form-field>

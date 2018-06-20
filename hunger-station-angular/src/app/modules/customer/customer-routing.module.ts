@@ -15,7 +15,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import {CustomerPreOrderGuard} from './guard/CustomerPreOrderGuard';
 
 const routes: Routes = [
-  { path: 'sample', component: SampleComponent },
+  // { path: 'sample', component: SampleComponent },
   { path: 'checkout', component: CheckoutComponent, canActivate:[CustomerLoginGuard] },
   { path: 'orderdone', component: OrderConfirmationComponent, canActivate:[CustomerLoginGuard] },
   { path: 'restaurant-menu/:id', component: ResturantMenuComponent, canActivate:[CustomerLoginGuard, CustomerPreOrderGuard] },
@@ -24,7 +24,7 @@ const routes: Routes = [
   //{ path: 'customer-home', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },
   { path: '', component: DefaultHMComponent },
   // otherwise redirect to home
-  { path: '**', redirectTo: 'default' }
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

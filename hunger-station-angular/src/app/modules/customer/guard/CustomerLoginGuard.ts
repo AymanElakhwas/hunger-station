@@ -20,7 +20,7 @@ export class CustomerLoginGuard implements CanActivate {
       let loginStatus = this.authServ.loggedIn();
       console.log('Customer Login Status: ' + loginStatus);
       if(!loginStatus){
-        this.router.navigate(['customer-login']);
+        this.router.navigate(['restaurants']);
       }else{
         return true;
       }

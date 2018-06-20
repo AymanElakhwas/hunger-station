@@ -3,7 +3,7 @@ const app = express();
 const morgan = require('morgan')
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const jwt = require('jsonwebtoken');
 
 //Routing configs
 const restaurantRoutes = require('./routes/restaurant')
@@ -37,6 +37,24 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+// Middleware to protect the routes
+app.use("*", (req, res, next) => {
+    if (req.baseUrl == '/api/customers/auth' || req.baseUrl == '/restaurants/auth')
+        return next();
+
+    const headerVal = req.header("Authorization");
+    if (!headerVal)
+        return next('unathorized user');
+
+    const token = headerVal.split(" ")[1];
+    jwt.verify(token, 'secret', function (err, decoded) {
+        if (err)
+            return next(err);
+        return next();
+    });
+});
+
 
 //Routing requests
 app.use("/restaurants", restaurantRoutes);

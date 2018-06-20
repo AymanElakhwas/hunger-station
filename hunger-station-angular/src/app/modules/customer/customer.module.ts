@@ -40,6 +40,8 @@ import { DefaultHMComponent } from './components/default-hm/default-hm.component
 import { JwtInterceptor } from './interceptors/jwt-interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
 
+import {CustomerPreOrderGuard} from './guard/CustomerPreOrderGuard';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -78,7 +80,8 @@ import { LogoutComponent } from './components/logout/logout.component';
             RestaurantService,
             CustomerLoginGuard,
             CustomerAlreadyLoggedGuard,
-            { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+            { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+            CustomerPreOrderGuard
         ],
     exports: [
         LoginComponent,

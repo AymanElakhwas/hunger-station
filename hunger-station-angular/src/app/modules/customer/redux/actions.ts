@@ -4,6 +4,7 @@ import { OrderState } from '../interfaces/OrderState';
 import { BasketMenuItem } from '../interfaces/basket-menu-item';
 
 export const ADD_ORDER_ITEM = 'ADD_ORDER_ITEM';
+export const CLEAR_ORDER_STATE = 'CLEAR_ORDER_STATE';
 
 @Injectable()
 export class CustOrderActionsService {
@@ -18,4 +19,11 @@ export class CustOrderActionsService {
             });
     }
 
+    clearOrderState(){
+        console.log('Clearing Order State !');
+        this.ngRedux.dispatch(
+            { 
+                type: CLEAR_ORDER_STATE
+            });
+    }
 }

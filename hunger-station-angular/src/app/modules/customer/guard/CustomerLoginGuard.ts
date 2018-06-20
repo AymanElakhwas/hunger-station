@@ -18,7 +18,7 @@ export class CustomerLoginGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       let loginStatus = this.authServ.loggedIn();
-    //   console.log('Login Status: ' + loginStatus);
+      console.log('Customer Login Status: ' + loginStatus);
       if(!loginStatus){
         this.router.navigate(['customer-login']);
       }else{

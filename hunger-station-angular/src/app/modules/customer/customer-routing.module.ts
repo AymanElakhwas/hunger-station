@@ -11,10 +11,13 @@ import { CustomerAlreadyLoggedGuard } from './guard/CustomerAlreadyLoggedGuard';
 
 import {DefaultHMComponent} from './components/default-hm/default-hm.component'
 
+import {CustomerPreOrderGuard} from './guard/CustomerPreOrderGuard';
+
+
 const routes: Routes = [
   // { path: 'sample', component: SampleComponent },
   { path: 'orderdone', component: OrderConfirmationComponent, canActivate:[CustomerLoginGuard] },
-  { path: 'restaurant-menu/:id', component: ResturantMenuComponent, canActivate:[CustomerLoginGuard] },
+  { path: 'restaurant-menu/:id', component: ResturantMenuComponent, canActivate:[CustomerLoginGuard,CustomerPreOrderGuard] },
   { path: 'restaurants', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },
   { path: 'customer-login', component: LoginComponent, canActivate:[CustomerAlreadyLoggedGuard] },
   // { path: 'customer-home', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },

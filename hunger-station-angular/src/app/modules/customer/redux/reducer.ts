@@ -1,5 +1,6 @@
 import { OrderState } from '../interfaces/OrderState';
 // import { OrderBasket } from '../interfaces/order-basket';
+import {ADD_ORDER_ITEM, CLEAR_ORDER_STATE} from './actions';
 
 const initialState: OrderState = 
     {   data: 
@@ -51,9 +52,15 @@ function addOrderItem(state, action): OrderState {
     return obj;
 }
 
+
+function clearOrderState(state, action): OrderState {
+     return Object.assign({},initialState);
+}
+
 export function reducer(state: OrderState = initialState, action) {
     switch (action.type) {
-        case 'ADD_ORDER_ITEM': return addOrderItem(state, action);
+        case ADD_ORDER_ITEM: return addOrderItem(state, action);
+        case CLEAR_ORDER_STATE: return clearOrderState(state, action);
         default: return state;
     }
 }

@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 import { RestaurantOrdersService } from '../../service/restaurant-orders-service'
+
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-resturant-orders',
@@ -12,6 +14,8 @@ export class ResturantOrdersComponent implements OnInit {
 
   resturantId: string = ''/*'5b26cf7bb117e39f2849c979'*/;
   restaurantOrders;
+
+  private subscription: Subscription;
 
   // panelOpenState: boolean = false;
 
@@ -40,7 +44,7 @@ export class ResturantOrdersComponent implements OnInit {
     }
 
     console.log('Getting Orders for Restaurant ID: ' + this.resturantId);
-    this.restaurOrderServ.getOrdersByRestaurantId(this.resturantId).subscribe((data) => {
+    this.subscription = this.restaurOrderServ.getOrdersByRestaurantId(this.resturantId).subscribe((data) => {
       if (data['error']) {
         this.restaurantOrders = [];
       } else {
@@ -59,6 +63,15 @@ export class ResturantOrdersComponent implements OnInit {
     newOrder.order_status = "SERVED";
     this.restaurOrderServ.updateOrderStatus(order).subscribe(data => { order.order_status = "SERVED"; });
   }
+
+  ngOnDestroy(){
+    
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
+  }
+
+
 }
 
 

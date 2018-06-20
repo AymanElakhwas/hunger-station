@@ -7,7 +7,7 @@ import { OrderState } from '../../interfaces/OrderState';
 import { OrderBasket } from '../../interfaces/order-basket';
 
 import { select } from 'ng2-redux';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { CustOrderActionsService } from '../../redux/actions';
 
@@ -25,16 +25,20 @@ export class ResturantMenuComponent implements OnInit {
   restaurantImg: string = '';
   menuItems: any[] = [];
 
+  private subscription: Subscription;
+  private routeSubscription: Subscription;
+  
+
   // @select('data') orderItemsObservable: Observable<OrderState>;
   constructor(
       private restaurServ:RestaurantService, 
       private custOrdServ: CustOrderActionsService,
       private route:ActivatedRoute) {
 
-        route.params.subscribe(params=>{
+        this.routeSubscription = route.params.subscribe(params=>{
           this.resturantId = params['id'];
 
-          this.restaurServ.findOne(this.resturantId).subscribe( (data) => {
+          this.subscription = this.restaurServ.findOne(this.resturantId).subscribe( (data) => {
             if(data['error']){
                 this.menuItems = [];
             }else{
@@ -71,6 +75,18 @@ export class ResturantMenuComponent implements OnInit {
             qty: 1, 
             price: this.menuItems[value].price
         });
+
+  }
+
+  ngOnDestroy(){
+    
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
+
+    if(this.routeSubscription){
+      this.routeSubscription.unsubscribe();
+    }
 
   }
 

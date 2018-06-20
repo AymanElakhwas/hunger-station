@@ -35,6 +35,6 @@ export class CustomerAuthenticationService {
         const customer = localStorage.getItem('currentCustomer');
         if (!token || !customer)
             return false;
-        return this.jwtHelper.isTokenExpired(token);
+        return !this.jwtHelper.isTokenExpired(token);
     }
 }

@@ -2,11 +2,11 @@
 
 <mat-grid-list cols="4" rowHeight="16:6">
 
-  <mat-grid-tile colspan="4" rowspan="1" >
-    <figure style="position: absolute;right: 0px;top: 0px;">
-        <img src="{{restaurantImg}}" alt="{{restaurantName}}" width="80" height="80"/>
-        <figcaption>{{restaurantName}}</figcaption>
-    </figure>    
+  <mat-grid-tile colspan="4" rowspan="1" [style.background]="'#500001'">
+    <div style="position: absolute; left: 0px;">
+      <img src="{{restaurantImg}}" alt="{{restaurantName}}" width="140" height="140" />
+      <h1 style="color:white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 600; font-size: 30px; margin-left: 20px; vertical-align: 20px; display: inline;">{{restaurantName}}</h1>
+    </div>
   </mat-grid-tile>
 
   <!-- <mat-grid-tile

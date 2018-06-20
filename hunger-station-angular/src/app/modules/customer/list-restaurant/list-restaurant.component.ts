@@ -58,7 +58,7 @@ export class ListRestaurantComponent implements OnInit {
             .subscribe((restaurants: Restaurant[]) => {
                 this.restaurants = restaurants;
                 console.log(restaurants.length)
-                if (restaurants.length < 10) {
+                if (restaurants.length < 9) {
                     this.page--;
                     this.lastPage = true;
                 }

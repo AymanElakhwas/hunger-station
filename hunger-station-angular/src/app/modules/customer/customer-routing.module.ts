@@ -8,22 +8,19 @@ import { ListRestaurantComponent } from './list-restaurant/list-restaurant.compo
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { CustomerLoginGuard } from './guard/CustomerLoginGuard';
 import { CustomerAlreadyLoggedGuard } from './guard/CustomerAlreadyLoggedGuard';
-
-import {DefaultHMComponent} from './components/default-hm/default-hm.component'
-
-import {CustomerPreOrderGuard} from './guard/CustomerPreOrderGuard';
-
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
-  // { path: 'sample', component: SampleComponent },
+  { path: 'sample', component: SampleComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate:[CustomerLoginGuard] },
   { path: 'orderdone', component: OrderConfirmationComponent, canActivate:[CustomerLoginGuard] },
-  { path: 'restaurant-menu/:id', component: ResturantMenuComponent, canActivate:[CustomerLoginGuard,CustomerPreOrderGuard] },
+  { path: 'restaurant-menu/:id', component: ResturantMenuComponent, canActivate:[CustomerLoginGuard] },
   { path: 'restaurants', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },
   { path: 'customer-login', component: LoginComponent, canActivate:[CustomerAlreadyLoggedGuard] },
-  // { path: 'customer-home', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },
-  { path: '', component: DefaultHMComponent },
+  { path: 'default', component: LoginComponent },
+  { path: 'customer-home', component: ListRestaurantComponent, canActivate:[CustomerLoginGuard] },
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'default' }
 ];
 
 @NgModule({

@@ -75,7 +75,7 @@ router.get("/:longitude/:latitude/", (req, res, next) => {
         }
     };
     const page = parseInt(req.query.page)
-    const size = 10;
+    const size = 9;
 
     if (page < 0 || page === 0) {
         return res.status(500).json({ message: "Invalid page number." })

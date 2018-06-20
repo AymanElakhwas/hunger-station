@@ -2,21 +2,27 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>HungerStationAngular</title>
-  <base href="/">
+    <meta charset="utf-8">
+    <title>HungerStationAngular</title>
+    <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
-  <header style="background-color: #ffdd00; height: 60px;">
-    <!--span style="color: #632a7b; margin-top: 40px; margin-left:80px; font-weight:900; letter-spacing:1px; font-family:sans-serif; font-size: 2em;">Hunger Station</span-->
-    <img src="assets/logo.png" />
-  </header>
-  <app-root></app-root>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript">
+        var stripe = Stripe('pk_test_lIoecq1MN0aK7xiIIpVQ4A8Y'); // use your test publishable key
+        var elements = stripe.elements();
+    </script>
+    <header style="background-color: #ffdd00; height: 60px;">
+        <!--span style="color: #632a7b; margin-top: 40px; margin-left:80px; font-weight:900; letter-spacing:1px; font-family:sans-serif; font-size: 2em;">Hunger Station</span-->
+        <img src="assets/logo.png" />
+    </header>
+    <app-root></app-root>
 </body>
 
 </html>

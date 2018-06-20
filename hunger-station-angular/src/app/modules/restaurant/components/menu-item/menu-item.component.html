@@ -1,47 +1,51 @@
-<mat-accordion>
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Add new item to your menu
-            </mat-panel-title>
+<div class="bg">
+    <div class="wrapper">
+        <mat-accordion>
+            <mat-expansion-panel expanded="{{expanded}}">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Add new item to your menu
+                    </mat-panel-title>
 
-        </mat-expansion-panel-header>
-        <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)">
+                </mat-expansion-panel-header>
+                <form #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)">
 
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Name" name="name" ngModel #name="ngModel" required>
-                <mat-error *ngIf="name.hasError('notValidName')">
-                    Duplicate <strong>name</strong>
-                  </mat-error>
-            </mat-form-field>
-
-
-            <mat-form-field class="full-width">
-                <textarea matInput placeholder="Enter description" name="desc" ngModel #name="ngModel"></textarea>
-            </mat-form-field>
-
-            <mat-form-field class="full-width">
-                <input matInput placeholder="Amount" type="number" name="price" ngModel #name="ngModel" required>
-                <span matPrefix>$&nbsp;</span>
-            </mat-form-field>
-            <button type="submit" [disabled]="!f.valid" mat-raised-button color="primary">Save</button>
-        </form>
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Name" name="name" ngModel #name="ngModel" required>
+                        <mat-error *ngIf="name.hasError('notValidName')">
+                            Duplicate
+                            <strong>name</strong>
+                        </mat-error>
+                    </mat-form-field>
 
 
-    </mat-expansion-panel>
-</mat-accordion>
+                    <mat-form-field class="full-width">
+                        <textarea matInput placeholder="Enter description" name="desc" ngModel #name="ngModel"></textarea>
+                    </mat-form-field>
+
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Amount" type="number" name="price" ngModel #name="ngModel" required>
+                        <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                    <button type="submit" [disabled]="!f.valid" click="acc.close()" mat-raised-button color="primary">Save</button>
+                </form>
 
 
-<h2 class="mat-title">Available Menu Items</h2>
+            </mat-expansion-panel>
+        </mat-accordion>
 
-<mat-list>
-    <mat-list-item *ngFor="let menu_item of menu_items">
-        <img mat-list-avatar src="{{menu_item.img}}" alt="{{menu_item.name}}">
-        <h3 mat-line> {{menu_item.name}} </h3>
-        <p mat-line>
-            {{menu_item.desc}}
-        </p>
-        <div> ${{menu_item.price}} </div>
-        <mat-divider></mat-divider>
-    </mat-list-item>
-</mat-list>
+
+        <h2 class="mat-title">Available Menu Items</h2>
+
+        <mat-list>
+            <mat-list-item *ngFor="let menu_item of menu_items">
+                <img mat-list-avatar src="{{menu_item.img}}" alt="{{menu_item.name}}">
+                <h3 mat-line> {{menu_item.name}} </h3>
+                <p mat-line>
+                    {{menu_item.desc}}
+                </p>
+                <div> ${{menu_item.price}} </div>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </div>

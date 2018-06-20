@@ -1,56 +1,26 @@
-<!-- <div style="margin:70px;"></div> -->
+<div class="bg">
+    <div class="wrapper">
+        <mat-grid-list cols="4">
+            <mat-grid-tile colspan="3" rowspan="5">
 
-<mat-grid-list cols="4" rowHeight="16:6">
+                <mat-list cdk-scrollable>
+                    <h3 mat-subheader>Menu Items</h3>
+                    <mat-list-item *ngFor="let mItem of menuItems;let num=index">
+                        <img mat-list-avatar src="{{mItem.img}}" alt="{{mItem.name}}">
+                        <h3 mat-line> {{mItem.name}} </h3>
+                        <p mat-line class="demo-2">{{mItem.desc}}</p>
+                        <div> ${{mItem.price}} </div>
+                        <button mat-icon-button (click)="handleBtnAdd(num)">
+                            <mat-icon>add_circle_outline</mat-icon>
+                        </button>
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                </mat-list>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="1" rowspan="6">
+                <order-basket></order-basket>
+            </mat-grid-tile>
+        </mat-grid-list>
 
-  <mat-grid-tile colspan="4" rowspan="1" [style.background]="'#500001'">
-    <div style="position: absolute; left: 0px;">
-      <img src="{{restaurantImg}}" alt="{{restaurantName}}" width="140" height="140" />
-      <h1 style="color:white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 600; font-size: 30px; margin-left: 20px; vertical-align: 20px; display: inline;">{{restaurantName}}</h1>
     </div>
-  </mat-grid-tile>
-
-  <!-- <mat-grid-tile
-      colspan="1"
-      rowspan="2"
-      [style.background]="'lightgreen'">
-    Two
-  </mat-grid-tile> -->
-
-  <mat-grid-tile colspan="3" rowspan="5">
-
-    <!-- <mat-card> -->
-    <mat-list cdk-scrollable>
-
-      <h3 mat-subheader>Menu Items</h3>
-
-      <mat-list-item *ngFor="let mItem of menuItems;let num=index">
-        <img mat-list-avatar src="{{mItem.img}}" alt="{{mItem.name}}">
-        <h3 mat-line> {{mItem.name}} </h3>
-        <p mat-line class="demo-2">
-          {{mItem.desc}}
-        </p>
-        <div> ${{mItem.price}} </div>
-        <button mat-icon-button (click)="handleBtnAdd(num)">
-          <mat-icon>add_circle_outline</mat-icon>
-        </button>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-
-    </mat-list>
-    <!-- </mat-card> -->
-  </mat-grid-tile>
-
-  <mat-grid-tile colspan="1" rowspan="6">
-    <order-basket></order-basket>
-  </mat-grid-tile>
-
-  <!-- <mat-grid-tile
-      colspan="4"
-      rowspan="1"
-      [style.background]="'lightpink'">
-    Four
-  </mat-grid-tile> -->
-
-</mat-grid-list>
-
-<!-- <div style="margin:70px;"></div> -->
+</div>

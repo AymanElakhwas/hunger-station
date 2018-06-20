@@ -14,7 +14,7 @@ import { OrderState } from '../../interfaces/OrderState';
 })
 
 export class OrderBasketComponent implements OnInit {
-  nextPageUrl: string = "/orderdone";
+  nextPageUrl: string = "/checkout";
   private orderBasket: OrderBasket;
 
 
@@ -32,7 +32,6 @@ export class OrderBasketComponent implements OnInit {
 
   ngOnInit() {
     this.orderItemsObservable.subscribe((orderBasket: OrderBasket) => {
-
       this.orderBasket = orderBasket;
       this.calculateSummaryPrices(this.orderBasket);
       this.addCustomerDataToOrderBasket(this.orderBasket);

@@ -8,7 +8,7 @@ import { JwtHelper } from 'angular2-jwt';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [CustomerAuthenticationService, JwtHelper]
+  providers: []
 })
 export class LoginComponent {
   loading = false;

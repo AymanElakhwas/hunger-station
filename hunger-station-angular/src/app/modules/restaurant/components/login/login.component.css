@@ -1,0 +1,38 @@
+.login-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; 
+    top:100px;
+}
+
+.login-form {
+    min-width: 150px;
+    max-width: 300px;
+    margin: 50px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+button {
+    margin: 30px 0;
+}
+
+.login-title {
+    font-size: 1.7em;
+} 
+
+.error {
+    color:red;
+}
+
+.container {
+    height: 700px;
+    background-image: url("https://libertyhouserestaurant.com/wp-content/uploads/sites/13/2016/11/slide-restaurant.jpg");
+    background-repeat: no-repeat;
+    background-position:  top center;
+    background-size: 100%
+}

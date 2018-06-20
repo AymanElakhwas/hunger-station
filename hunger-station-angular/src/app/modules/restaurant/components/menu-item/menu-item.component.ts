@@ -4,7 +4,7 @@ import { Restaurant } from '../../interface/restaurant';
 
 
 @Component({
-    selector: 'menu-item',
+    selector: 'app-menu-item',
     templateUrl: './menu-item.component.html',
     styleUrls: ['./menu-item.component.css']
 })

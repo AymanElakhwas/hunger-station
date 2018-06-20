@@ -1,0 +1,25 @@
+<mat-tab-group>
+    <mat-tab label="Orders">
+        <app-resturant-orders></app-resturant-orders>
+    </mat-tab>
+    <mat-tab label="Menu">
+        <app-menu-item></app-menu-item>
+    </mat-tab>
+    <mat-tab label="Restaurant Detail">
+        <div style="margin-top: 30px">
+            <div>
+                <img src="{{currentRestaurant.image_url}}" style="float: left; margin-right: 30px ">
+            </div>
+            <div>
+                <p>{{currentRestaurant.name}}</p>
+                <p>{{currentRestaurant.phone}}</p>
+                <p>{{currentRestaurant.email}}</p>
+                <p>{{currentRestaurant.address.street}}
+                    <br />{{currentRestaurant.address.city}}, {{currentRestaurant.address.state}} {{currentRestaurant.address.zip}}</p>
+            </div>
+
+
+        </div>
+
+    </mat-tab>
+</mat-tab-group>

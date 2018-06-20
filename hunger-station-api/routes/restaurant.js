@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/restaurant");
 const mongodb = require('mongodb');
+const jwt = require('jsonwebtoken');
 
 router.get("/", (req, res, next) => {
     // We need to get the customer's location 
@@ -75,7 +76,7 @@ router.get("/:longitude/:latitude/", (req, res, next) => {
     };
     const page = parseInt(req.query.page)
     const size = 10;
-   
+
     if (page < 0 || page === 0) {
         return res.status(500).json({ message: "Invalid page number." })
     }
@@ -107,5 +108,41 @@ router.get("/:longitude/:latitude/", (req, res, next) => {
             });
         });
 });
+
+
+
+router.post('/auth', (req, res, next) => {
+    console.log(req.body)
+    Restaurant.findOne({ 'email': req.body['username'] }, function (err, rest) {
+        if (err) {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        }
+        if (rest && rest.password == req.body['password']) {
+            const token = jwt.sign(JSON.stringify(rest), 'secret');
+            res.json({
+                'token': token,
+
+                'restaurant': {
+                    id: rest._id,
+                    name: rest.name,
+                    address: rest.address,
+                    phone: rest.phone,
+                    email: rest.email,
+                    image_url: rest.image_url,
+                }
+            });
+        } else {
+            res.json({
+                'error': {
+                    'message': 'Invalid Credentials'
+                }
+            });
+        }
+    });
+});
+
 
 module.exports = router;

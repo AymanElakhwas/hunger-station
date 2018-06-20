@@ -36,6 +36,7 @@ import { RestaurantAlreadyLoggedGuard } from './guard/RestaurantAlreadyLoggedGua
 import { RestaurantLoginGuard } from './guard/RestaurantLoginGuard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -58,8 +59,8 @@ import { JwtInterceptor } from './interceptors/jwt-interceptor';
         MatInputModule,
         MatTabsModule
     ],
-    declarations: [MenuItemComponent, ResturantOrdersComponent, RestaurantLoginComponent, HomeComponent],
-    exports: [MenuItemComponent, ResturantOrdersComponent, RestaurantLoginComponent, HomeComponent],
+    declarations: [MenuItemComponent, ResturantOrdersComponent, RestaurantLoginComponent, HomeComponent, LogoutComponent],
+    exports: [MenuItemComponent, ResturantOrdersComponent, RestaurantLoginComponent, HomeComponent, LogoutComponent],
     providers: [
         RestaurantAuthenticationService,
         RestaurantService,

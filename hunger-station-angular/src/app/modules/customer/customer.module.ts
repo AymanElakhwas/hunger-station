@@ -38,6 +38,7 @@ import { CustomerAuthenticationService } from './services/customer-authenticatio
 import { JwtHelper } from 'angular2-jwt';
 import { DefaultHMComponent } from './components/default-hm/default-hm.component';
 import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
     imports: [
@@ -67,7 +68,8 @@ import { JwtInterceptor } from './interceptors/jwt-interceptor';
         OrderConfirmationComponent,
         SampleComponent, ResturantMenuComponent,
         ListRestaurantComponent,
-        DefaultHMComponent],
+        DefaultHMComponent,
+        LogoutComponent],
     providers:
         [
             CustomerAuthenticationService,
@@ -85,7 +87,8 @@ import { JwtInterceptor } from './interceptors/jwt-interceptor';
         OrderConfirmationComponent,
         ResturantMenuComponent,
         ListRestaurantComponent,
-        DefaultHMComponent]
+        DefaultHMComponent,
+        LogoutComponent]
 })
 export class CutomerModule {
     constructor(ngRedux: NgRedux<OrderState>) {

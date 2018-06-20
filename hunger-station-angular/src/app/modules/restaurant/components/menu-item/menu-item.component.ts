@@ -10,6 +10,7 @@ import { MatAccordion } from '@angular/material';
     styleUrls: ['./menu-item.component.css']
 })
 export class MenuItemComponent implements OnInit {
+    resturantId: string = '' /*'5b26cf7bb117e39f2849c97a'*/;
     private expanded: string;
     private restaurant: Restaurant;
     private menu_items: any[];
@@ -17,7 +18,14 @@ export class MenuItemComponent implements OnInit {
     constructor(private restaurantService: RestaurantService) { }
 
     ngOnInit() {
-        this.restaurantService.findOne('5b26cf7bb117e39f2849c97a').subscribe((restaurant: Restaurant) => {
+
+        if (JSON.parse(localStorage.getItem('currentRestaurnt'))) {
+            this.resturantId = JSON.parse(localStorage.getItem('currentRestaurnt')).id;
+        }
+
+        console.log('Getting Menu Items for Restaurant ID: ' + this.resturantId);
+
+        this.restaurantService.findOne(this.resturantId).subscribe((restaurant: Restaurant) => {
             this.restaurant = restaurant;
             this.menu_items = this.restaurant.menu_item;
         },
@@ -44,7 +52,7 @@ export class MenuItemComponent implements OnInit {
                 "img": "https://www.yourmomhatesthis.com/images/2016/12/Pizza-Transparent.png"
             }
 
-           
+
 
             this.restaurantService.addMenuItem(newMenuItem, this.restaurant._id.toString()).subscribe(
                 (data) => {

@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SampleComponent } from './components/sample/sample.component';
 import { RouterModule } from '@angular/router';
 
@@ -36,6 +36,11 @@ import { CustomerAlreadyLoggedGuard } from './guard/CustomerAlreadyLoggedGuard';
 import { CustomerLoginGuard } from './guard/CustomerLoginGuard';
 import { CustomerAuthenticationService } from './services/customer-authentication-service';
 import { JwtHelper } from 'angular2-jwt';
+import { DefaultHMComponent } from './components/default-hm/default-hm.component';
+import { JwtInterceptor } from './interceptors/jwt-interceptor';
+import { LogoutComponent } from './components/logout/logout.component';
+
+import { CustomerPreOrderGuard } from './guard/CustomerPreOrderGuard';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
@@ -60,17 +65,36 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
         MatTableModule,
         MatPaginatorModule
     ],
-    declarations: [LoginComponent, OrderBasketComponent, OrderConfirmationComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent, CheckoutComponent],
-    providers: 
+    declarations: [
+        LoginComponent,
+        OrderBasketComponent,
+        OrderConfirmationComponent,
+        SampleComponent, ResturantMenuComponent,
+        ListRestaurantComponent,
+        DefaultHMComponent,
+        LogoutComponent,
+        CheckoutComponent],
+    providers:
         [
-            CustomerAuthenticationService, 
-            JwtHelper, 
-            CustOrderActionsService, 
-            RestaurantService, 
+            CustomerAuthenticationService,
+            JwtHelper,
+            CustOrderActionsService,
+            RestaurantService,
             CustomerLoginGuard,
+            CustomerAlreadyLoggedGuard,
+            { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+            CustomerPreOrderGuard,
             CustomerAlreadyLoggedGuard
         ],
-    exports: [LoginComponent, OrderBasketComponent, SampleComponent, OrderConfirmationComponent, ResturantMenuComponent, ListRestaurantComponent]
+    exports: [
+        LoginComponent,
+        OrderBasketComponent,
+        SampleComponent,
+        OrderConfirmationComponent,
+        ResturantMenuComponent,
+        ListRestaurantComponent,
+        DefaultHMComponent,
+        LogoutComponent]
 })
 export class CutomerModule {
     constructor(ngRedux: NgRedux<OrderState>) {

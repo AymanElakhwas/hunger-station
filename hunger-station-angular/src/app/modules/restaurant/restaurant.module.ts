@@ -30,6 +30,13 @@ import { RestaurantOrdersService } from './service/restaurant-orders-service'
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 import { HomeComponent} from './components/home/home-component'
 
+import {RestaurantAuthenticationService} from './service/restaurant-authentication-service';
+
+import {RestaurantAlreadyLoggedGuard} from './guard/RestaurantAlreadyLoggedGuard';
+import {RestaurantLoginGuard} from './guard/RestaurantLoginGuard';
+
+
+
 @NgModule({
     imports: [
         CommonModule,
@@ -51,6 +58,13 @@ import { HomeComponent} from './components/home/home-component'
     ],
     declarations: [MenuItemComponent, ResturantOrdersComponent, RestaurantLoginComponent, HomeComponent],
     exports: [MenuItemComponent, ResturantOrdersComponent, RestaurantLoginComponent, HomeComponent],
-    providers: [RestaurantService, RestaurantOrdersService, { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }]
+    providers: [
+        RestaurantAuthenticationService,
+        RestaurantService, 
+        RestaurantOrdersService, 
+        { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+        RestaurantAlreadyLoggedGuard,
+        RestaurantLoginGuard
+    ]
 })
 export class RestaurantModule { }

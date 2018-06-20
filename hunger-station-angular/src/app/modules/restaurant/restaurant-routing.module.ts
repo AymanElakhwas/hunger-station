@@ -6,13 +6,16 @@ import { ResturantOrdersComponent } from './components/resturant-orders/resturan
 import { RestaurantLoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home-component';
 
+import {RestaurantAlreadyLoggedGuard} from './guard/RestaurantAlreadyLoggedGuard';
+import {RestaurantLoginGuard} from './guard/RestaurantLoginGuard';
+
 const routes: Routes = [
     
     
-    { path: 'restaurant-login', component: RestaurantLoginComponent },
-    { path: 'restaurant-home', component: HomeComponent },
-    { path: 'menu-items', component: MenuItemComponent },
-    { path: 'restaurant-orders', component: ResturantOrdersComponent }
+    { path: 'restaurant-login', component: RestaurantLoginComponent, canActivate:[RestaurantAlreadyLoggedGuard] },
+    { path: 'restaurant-home', component: HomeComponent, canActivate:[RestaurantLoginGuard] },
+    // { path: 'menu-items', component: MenuItemComponent },
+    // { path: 'restaurant-orders', component: ResturantOrdersComponent }
     // otherwise redirect to home
   ];
   

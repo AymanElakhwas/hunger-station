@@ -6,21 +6,21 @@ import {
     Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import {CustomerAuthenticationService} from '../services/customer-authentication-service';
+import {RestaurantAuthenticationService} from '../service/restaurant-authentication-service';
 
 @Injectable()
-export class CustomerAlreadyLoggedGuard implements CanActivate {
+export class RestaurantAlreadyLoggedGuard implements CanActivate {
 
-  constructor(private router: Router, private authServ: CustomerAuthenticationService) {
+  constructor(private router: Router, private authServ: RestaurantAuthenticationService) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       let loginStatus = this.authServ.loggedIn();
-    //   console.log('Login Status: ' + loginStatus);
+      console.log('Restaurant Login Status: ' + loginStatus);
       if(loginStatus){
-        this.router.navigate(['restaurants']);
+        this.router.navigate(['restaurant-home']);
       }else{
         return true;
       }

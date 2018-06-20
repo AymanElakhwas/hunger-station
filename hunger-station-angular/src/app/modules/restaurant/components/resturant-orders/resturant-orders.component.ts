@@ -10,7 +10,7 @@ import { RestaurantOrdersService } from '../../service/restaurant-orders-service
 })
 export class ResturantOrdersComponent implements OnInit {
 
-  resturantId: string = '5b26cf7bb117e39f2849c979';
+  resturantId: string = ''/*'5b26cf7bb117e39f2849c979'*/;
   restaurantOrders;
 
   // panelOpenState: boolean = false;
@@ -34,6 +34,12 @@ export class ResturantOrdersComponent implements OnInit {
 
     // this.dataSource.paginator = this.paginator;
     // this.resturantId = localStorage.getItem('restaurantId');
+
+    if(JSON.parse(localStorage.getItem('currentRestaurnt'))){
+      this.resturantId = JSON.parse(localStorage.getItem('currentRestaurnt')).id;
+    }
+
+    console.log('Getting Orders for Restaurant ID: ' + this.resturantId);
     this.restaurOrderServ.getOrdersByRestaurantId(this.resturantId).subscribe((data) => {
       if (data['error']) {
         this.restaurantOrders = [];

@@ -26,14 +26,14 @@ export class RestaurantAuthenticationService {
     logout() {
         // remove token from local storage to log user out
         localStorage.removeItem('restaurantToken');
-        localStorage.removeItem('currentRestaurntId');
+        localStorage.removeItem('currentRestaurnt');
     }
 
     loggedIn() {
         const token = localStorage.getItem('restaurantToken');
-        const restaurant = localStorage.getItem('currentRestaurntId');
+        const restaurant = localStorage.getItem('currentRestaurnt');
         if (!token || !restaurant)
             return false;
-        return this.jwtHelper.isTokenExpired(token);
+        return true/*!this.jwtHelper.isTokenExpired(token)*/;
     }
 }

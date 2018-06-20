@@ -36,6 +36,7 @@ import { CustomerAlreadyLoggedGuard } from './guard/CustomerAlreadyLoggedGuard';
 import { CustomerLoginGuard } from './guard/CustomerLoginGuard';
 import { CustomerAuthenticationService } from './services/customer-authentication-service';
 import { JwtHelper } from 'angular2-jwt';
+import { DefaultHMComponent } from './components/default-hm/default-hm.component';
 
 @NgModule({
     imports: [
@@ -59,7 +60,13 @@ import { JwtHelper } from 'angular2-jwt';
         MatTableModule,
         MatPaginatorModule
     ],
-    declarations: [LoginComponent, OrderBasketComponent, OrderConfirmationComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent],
+    declarations: [
+        LoginComponent, 
+        OrderBasketComponent, 
+        OrderConfirmationComponent, 
+        SampleComponent, ResturantMenuComponent, 
+        ListRestaurantComponent, 
+        DefaultHMComponent],
     providers: 
         [
             CustomerAuthenticationService, 
@@ -69,7 +76,14 @@ import { JwtHelper } from 'angular2-jwt';
             CustomerLoginGuard,
             CustomerAlreadyLoggedGuard
         ],
-    exports: [LoginComponent, OrderBasketComponent, SampleComponent, OrderConfirmationComponent, ResturantMenuComponent, ListRestaurantComponent]
+    exports: [
+        LoginComponent, 
+        OrderBasketComponent, 
+        SampleComponent, 
+        OrderConfirmationComponent, 
+        ResturantMenuComponent, 
+        ListRestaurantComponent,
+        DefaultHMComponent]
 })
 export class CutomerModule {
     constructor(ngRedux: NgRedux<OrderState>) {

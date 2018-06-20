@@ -9,14 +9,21 @@ import { Restaurant } from '../../interface/restaurant';
     styleUrls: ['./menu-item.component.css']
 })
 export class MenuItemComponent implements OnInit {
-
+    resturantId: string = '' /*'5b26cf7bb117e39f2849c97a'*/;
     private restaurant: Restaurant;
     private menu_items: any[];
 
     constructor(private restaurantService: RestaurantService) { }
 
     ngOnInit() {
-        this.restaurantService.findOne('5b26cf7bb117e39f2849c97a').subscribe((restaurant: Restaurant) => {
+
+        if(JSON.parse(localStorage.getItem('currentRestaurnt'))){
+            this.resturantId = JSON.parse(localStorage.getItem('currentRestaurnt')).id;
+          }
+      
+          console.log('Getting Orders for Restaurant ID: ' + this.resturantId);
+
+        this.restaurantService.findOne(this.resturantId).subscribe((restaurant: Restaurant) => {
             this.restaurant = restaurant;
             this.menu_items = this.restaurant.menu_item;
         },

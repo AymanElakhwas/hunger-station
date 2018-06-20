@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule, MatInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SampleComponent } from './components/sample/sample.component';
 import { RouterModule } from '@angular/router';
 
@@ -37,6 +37,7 @@ import { CustomerLoginGuard } from './guard/CustomerLoginGuard';
 import { CustomerAuthenticationService } from './services/customer-authentication-service';
 import { JwtHelper } from 'angular2-jwt';
 import { DefaultHMComponent } from './components/default-hm/default-hm.component';
+import { JwtInterceptor } from './interceptors/jwt-interceptor';
 
 @NgModule({
     imports: [
@@ -61,27 +62,28 @@ import { DefaultHMComponent } from './components/default-hm/default-hm.component
         MatPaginatorModule
     ],
     declarations: [
-        LoginComponent, 
-        OrderBasketComponent, 
-        OrderConfirmationComponent, 
-        SampleComponent, ResturantMenuComponent, 
-        ListRestaurantComponent, 
+        LoginComponent,
+        OrderBasketComponent,
+        OrderConfirmationComponent,
+        SampleComponent, ResturantMenuComponent,
+        ListRestaurantComponent,
         DefaultHMComponent],
-    providers: 
+    providers:
         [
-            CustomerAuthenticationService, 
-            JwtHelper, 
-            CustOrderActionsService, 
-            RestaurantService, 
+            CustomerAuthenticationService,
+            JwtHelper,
+            CustOrderActionsService,
+            RestaurantService,
             CustomerLoginGuard,
-            CustomerAlreadyLoggedGuard
+            CustomerAlreadyLoggedGuard,
+            { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
         ],
     exports: [
-        LoginComponent, 
-        OrderBasketComponent, 
-        SampleComponent, 
-        OrderConfirmationComponent, 
-        ResturantMenuComponent, 
+        LoginComponent,
+        OrderBasketComponent,
+        SampleComponent,
+        OrderConfirmationComponent,
+        ResturantMenuComponent,
         ListRestaurantComponent,
         DefaultHMComponent]
 })

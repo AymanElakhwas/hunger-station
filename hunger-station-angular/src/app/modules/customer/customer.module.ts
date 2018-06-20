@@ -32,6 +32,9 @@ import { ListRestaurantComponent } from './list-restaurant/list-restaurant.compo
 import { RestaurantService } from './services/restaurant-service';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 
+import { CustomerLoginGuard } from './guard/CustomerLoginGuard';
+import { CustomerAuthenticationService } from './services/customer-authentication-service';
+import { JwtHelper } from 'angular2-jwt';
 
 @NgModule({
     imports: [
@@ -56,7 +59,7 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
         MatPaginatorModule
     ],
     declarations: [LoginComponent, OrderBasketComponent, OrderConfirmationComponent, SampleComponent, ResturantMenuComponent, ListRestaurantComponent],
-    providers: [CustOrderActionsService, RestaurantService],
+    providers: [CustomerAuthenticationService, JwtHelper, CustOrderActionsService, RestaurantService, CustomerLoginGuard],
     exports: [LoginComponent, OrderBasketComponent, SampleComponent, OrderConfirmationComponent, ResturantMenuComponent, ListRestaurantComponent]
 })
 export class CutomerModule {

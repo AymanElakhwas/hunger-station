@@ -1,1 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+.wrapper{
+    background-color: white;
+     padding-bottom: 5px;
+     width: 1200px; 
+     margin: 0 auto; 
+     padding: 10px 30px 9px 30px;
+ }
+
+ .bg{
+     background: url("https://media.istockphoto.com/photos/buffet-food-on-the-table-picture-id836473262?s=2048x2048") no-repeat !important;
+     width: 100%;
+     margin-top: 0px;
+     padding-top: 50px;
+   
+ }
+
+
